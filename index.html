@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ORBIT TV — Premium IPTV & Installation Center</title>
+<meta name="description" content="ORBIT TV packages, multilingual installation guides, player downloads and support.">
+<style>
+:root{
+  --bg:#02050d;--bg2:#07101f;--panel:#0b1426;--panel2:#101c33;--text:#f8fbff;
+  --muted:#9caec8;--blue:#127cff;--cyan:#37ddff;--green:#23cf84;--gold:#ffc64d;
+  --red:#ff5f64;--line:rgba(255,255,255,.10);--shadow:0 25px 80px rgba(0,0,0,.42)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--text);font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% -5%,rgba(18,124,255,.24),transparent 32%),
+    radial-gradient(circle at 95% 0%,rgba(55,221,255,.12),transparent 28%),
+    linear-gradient(180deg,#02050d 0%,#050b17 40%,#02050d 100%);
+}
+a{color:inherit}.wrap{width:min(1240px,calc(100% - 30px));margin:auto}
+header{
+  position:sticky;top:0;z-index:1000;background:rgba(2,5,13,.76);
+  backdrop-filter:blur(20px);border-bottom:1px solid var(--line)
+}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:950}
+.brand img{width:78px;height:55px;object-fit:contain}
+.brand-copy{font-size:20px;line-height:1}.brand-copy small{display:block;color:var(--muted);font-size:10px;letter-spacing:2.2px;margin-top:6px}
+.nav-links{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+select,.btn,button{
+  border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.045);
+  color:var(--text);padding:11px 15px;font-weight:850;text-decoration:none;cursor:pointer
+}
+select option{color:#111}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.22s}
+.btn:hover,button:hover{transform:translateY(-2px);border-color:rgba(55,221,255,.55)}
+.primary{background:linear-gradient(135deg,#0e5fe0,var(--blue));border-color:transparent;box-shadow:0 10px 30px rgba(18,124,255,.25)}
+.green{background:linear-gradient(135deg,#169a61,var(--green));border-color:transparent}
+.gold{background:linear-gradient(135deg,#d99016,var(--gold));color:#17120a;border-color:transparent}
+.hero{
+  position:relative;min-height:780px;display:grid;align-items:center;overflow:hidden;border-bottom:1px solid var(--line)
+}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.26}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,5,13,.24),rgba(2,5,13,.64) 58%,#02050d 100%)
+}
+.hero:after{
+  content:"";position:absolute;inset:auto 0 0;height:240px;
+  background:linear-gradient(180deg,transparent,#02050d)
+}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:90px 0 70px}
+.hero-logo{width:min(590px,88vw);filter:drop-shadow(0 28px 50px rgba(18,124,255,.34))}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:8px 14px;border-radius:999px;
+  border:1px solid rgba(55,221,255,.35);background:rgba(18,124,255,.10);color:#c6f8ff;
+  font-size:13px;font-weight:900;letter-spacing:.4px
+}
+.slogan{
+  max-width:1080px;margin:22px auto 18px;padding:22px 25px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,198,77,.13),rgba(18,124,255,.13));
+  border:1px solid rgba(255,198,77,.38);box-shadow:0 24px 60px rgba(0,0,0,.36);
+  font-size:clamp(27px,4.3vw,52px);font-weight:950;line-height:1.18
+}
+.slogan .a{color:#ffd25f}.slogan .b{color:#63e8ff}.slogan .c{color:#78ffb2}
+.hero h1{font-size:clamp(36px,6vw,72px);line-height:1.02;margin:20px 0 8px}
+.hero h2{font-size:clamp(25px,4vw,44px);margin:7px 0}
+.accent{color:var(--cyan)}
+.hero p{max-width:820px;margin:16px auto 0;color:var(--muted);font-size:18px;line-height:1.7}
+.hero-actions{display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:25px}
+.flag-strip{
+  margin:26px auto 0;max-width:1120px;overflow:hidden;border:1px solid var(--line);
+  background:rgba(2,5,13,.55);backdrop-filter:blur(12px);border-radius:20px;padding:14px 0
+}
+.flags-track{display:flex;width:max-content;gap:12px;animation:scrollFlags 35s linear infinite}
+.flag-strip:hover .flags-track{animation-play-state:paused}
+.flag{font-size:31px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
+@keyframes scrollFlags{to{transform:translateX(-50%)}}
+.section{padding:54px 0}
+.section-head{text-align:center;margin-bottom:28px}.section-head h2{font-size:clamp(30px,4.5vw,50px);margin:0 0 10px}.section-head p{color:var(--muted);font-size:17px;margin:0 auto;max-width:820px;line-height:1.7}
+.value-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
+.value-card{
+  background:linear-gradient(145deg,rgba(16,28,51,.97),rgba(6,12,24,.98));
+  border:1px solid var(--line);border-radius:28px;padding:30px;box-shadow:var(--shadow)
+}
+.value-card h2{font-size:clamp(30px,4vw,48px);margin:0 0 10px}.value-card p{color:var(--muted);font-size:18px;line-height:1.7}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.pill{padding:11px 14px;border-radius:999px;background:rgba(18,124,255,.10);border:1px solid rgba(55,221,255,.28);font-weight:900}
+.family-art{
+  position:relative;min-height:380px;overflow:hidden;background:
+  radial-gradient(circle at 50% 38%,rgba(55,221,255,.22),transparent 42%),
+  linear-gradient(135deg,#07152f,#02060e);
+  border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)
+}
+.tv{position:absolute;left:50%;top:42px;transform:translateX(-50%);width:67%;height:176px;border:10px solid #121a2a;border-radius:18px;background:linear-gradient(135deg,#075eea,#27d7ff);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.tv:after{content:"ORBIT TV";position:absolute;inset:0;display:grid;place-items:center;font-size:34px;font-weight:950}
+.sofa{position:absolute;left:16%;right:16%;bottom:26px;height:92px;background:linear-gradient(180deg,#24324a,#131c2d);border-radius:34px 34px 16px 16px}
+.people{position:absolute;left:13%;right:13%;bottom:54px;display:flex;justify-content:space-around;align-items:end}.person{font-size:82px;filter:drop-shadow(0 12px 14px rgba(0,0,0,.45))}
+.phone,.tablet{position:absolute;bottom:42px;background:#06101f;border:5px solid #2a3852;border-radius:13px;display:grid;place-items:center;font-weight:950;color:var(--cyan)}
+.phone{right:7%;width:60px;height:108px}.tablet{left:7%;width:122px;height:84px}
+.offers{padding-top:66px}
+.offer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.offer{
+  position:relative;padding:25px;border:1px solid var(--line);border-radius:23px;
+  background:linear-gradient(145deg,rgba(16,28,51,.98),rgba(6,12,24,.98));
+  box-shadow:var(--shadow);transition:.22s
+}
+.offer:hover{transform:translateY(-6px)}
+.offer.popular{border-color:rgba(255,198,77,.58);transform:translateY(-9px)}
+.tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:7px 14px;border-radius:999px;background:linear-gradient(135deg,#da9118,var(--gold));color:#17120a;font-size:12px;font-weight:950;white-space:nowrap}
+.offer h3{font-size:22px;margin:0 0 8px}.price{font-size:50px;font-weight:950;margin:10px 0}.offer ul{list-style:none;padding:0;margin:18px 0;display:grid;gap:10px;color:#dbe7f7}.offer li:before{content:"✓";color:var(--green);font-weight:950;margin-right:8px}.offer .btn{width:100%}
+.o1{box-shadow:inset 0 4px 0 #22c77a,var(--shadow)}.o2{box-shadow:inset 0 4px 0 #2b96ff,var(--shadow)}.o3{box-shadow:inset 0 4px 0 #ff9f2c,var(--shadow)}.o4{box-shadow:inset 0 4px 0 #ff6266,var(--shadow)}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}.trust{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.035);text-align:center;font-weight:900}.trust span{display:block;font-size:28px;margin-bottom:8px}
+.group-title{display:flex;align-items:center;gap:12px;margin:38px 0 16px;font-size:23px}.group-title:after{content:"";height:1px;flex:1;background:var(--line)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.card{background:linear-gradient(145deg,rgba(16,28,51,.98),rgba(6,12,24,.98));border:1px solid var(--line);border-radius:23px;overflow:hidden;box-shadow:var(--shadow);transition:.22s}.card:hover{transform:translateY(-5px);border-color:rgba(55,221,255,.34)}
+.visual{height:185px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 45%,rgba(18,124,255,.24),transparent 43%),linear-gradient(135deg,#08152e,#020711);overflow:hidden}.visual img{width:72%;height:76%;object-fit:contain;filter:drop-shadow(0 16px 28px rgba(0,0,0,.5))}.device{position:absolute;right:20px;bottom:15px;font-size:52px;font-weight:950}
+.body{padding:23px}.badge{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid rgba(55,221,255,.24);background:rgba(18,124,255,.10);color:#c9f8ff;font-size:12px;font-weight:900}.body h3{font-size:24px;margin:12px 0 7px}.body p{margin:0 0 17px;color:var(--muted);line-height:1.62}.actions{display:flex;gap:9px;flex-wrap:wrap}
+.guide{display:none;border-top:1px solid var(--line);margin-top:20px;padding-top:20px}.guide.open{display:block;animation:open .22s ease}@keyframes open{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
+.codebox{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#030711;border:1px solid rgba(55,221,255,.28);border-radius:16px;padding:16px;margin:14px 0}.codebox strong{font-size:27px;letter-spacing:2px}.codebox small{color:var(--muted)}
+.steps{counter-reset:s;display:grid;gap:17px;margin-top:17px}.step{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:13px}.step:before{content:counter(s);width:37px;height:37px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0e5fe0,var(--blue));font-weight:950}.step p{margin:5px 0 0;color:var(--muted)}.shot{display:block;width:100%;margin-top:13px;border:1px solid var(--line);border-radius:15px;background:#000}
+.note{margin:15px 0;padding:14px 16px;border-left:4px solid var(--gold);background:rgba(255,198,77,.08);border-radius:12px;color:#ffe0a0}
+.downloads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.download{padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035)}.download h3{margin:0 0 7px}.download p{margin:0 0 14px;color:var(--muted)}
+.contact{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.contact a{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--panel);text-align:center;text-decoration:none;font-weight:900;transition:.22s}.contact a:hover{transform:translateY(-4px);border-color:rgba(55,221,255,.35)}
+footer{border-top:1px solid var(--line);padding:30px 0;margin-top:44px;text-align:center;color:var(--muted)}
+.top{position:fixed;right:20px;bottom:20px;width:49px;height:49px;border-radius:50%;display:grid;place-items:center;background:var(--blue);text-decoration:none;font-size:22px;box-shadow:var(--shadow)}
+@media(max-width:1020px){.offer-grid{grid-template-columns:repeat(2,1fr)}.value-grid{grid-template-columns:1fr}.trust-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1100px){.contact{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:780px){.grid,.downloads,.contact{grid-template-columns:1fr}.brand-copy{display:none}.nav-links .btn{display:none}.offer-grid,.trust-row{grid-template-columns:1fr}.offer.popular{transform:none}.hero{min-height:860px}.flag{font-size:26px}.family-art{min-height:320px}.person{font-size:64px}.codebox{align-items:flex-start;flex-direction:column}}
+
+.family-photo-wrap{position:relative;overflow:hidden;border-radius:28px;border:1px solid var(--line);box-shadow:var(--shadow);min-height:380px;background:#050b16}
+.family-photo{width:100%;height:100%;min-height:380px;object-fit:cover;display:block}
+.family-photo-label{position:absolute;left:18px;right:18px;bottom:18px;padding:13px 16px;border-radius:15px;background:rgba(2,5,13,.72);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.14);font-weight:900;text-align:center}
+.search-box{max-width:760px;margin:0 auto 26px;display:flex;gap:10px}
+.search-box input{flex:1;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.05);color:var(--text);padding:14px 16px;font-size:16px;outline:none}
+.search-box input:focus{border-color:rgba(55,221,255,.55)}
+.vpn-card{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;background:linear-gradient(145deg,rgba(16,28,51,.98),rgba(6,12,24,.98));border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+.vpn-card h2{font-size:clamp(30px,4vw,48px);margin:0 0 10px}.vpn-card p{color:var(--muted);font-size:17px;line-height:1.7}
+.vpn-steps{counter-reset:vpn;display:grid;gap:14px;margin-top:18px}.vpn-step{counter-increment:vpn;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}.vpn-step:before{content:counter(vpn);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#0e5fe0,var(--blue));font-weight:950}
+.vpn-visual{min-height:340px;border-radius:22px;background:radial-gradient(circle at 50% 38%,rgba(55,221,255,.24),transparent 40%),linear-gradient(135deg,#07152f,#02060e);display:grid;place-items:center;border:1px solid var(--line);position:relative;overflow:hidden}
+.vpn-shield{font-size:120px;filter:drop-shadow(0 20px 30px rgba(0,0,0,.45))}
+.vpn-badge{position:absolute;bottom:22px;padding:10px 14px;border-radius:999px;background:rgba(35,207,132,.13);border:1px solid rgba(35,207,132,.35);font-weight:900;color:#8cffc1}
+.faq{display:grid;gap:13px;max-width:980px;margin:auto}.faq-item{border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.035);overflow:hidden}.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;padding:18px 20px;background:transparent;border:0;font-size:17px}.faq-a{display:none;padding:0 20px 18px;color:var(--muted);line-height:1.7}.faq-item.open .faq-a{display:block}.faq-item.open .faq-q span:last-child{transform:rotate(45deg)}
+.pro-footer{margin-top:50px;border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(7,16,31,.9),#02050d);padding:38px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px}.footer-brand img{width:180px}.footer-brand p{color:var(--muted);line-height:1.7}.footer-links{display:grid;gap:10px}.footer-links a{text-decoration:none;color:var(--muted)}.footer-links a:hover{color:var(--cyan)}
+@media(max-width:900px){.vpn-card,.footer-grid{grid-template-columns:1fr}.family-photo,.family-photo-wrap{min-height:280px}}
+
+/* V5 professional additions */
+.device-logo-img{width:100%;height:100%;object-fit:cover;display:block}
+.video-tutorials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.video-card{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:linear-gradient(145deg,rgba(16,28,51,.98),rgba(6,12,24,.98));box-shadow:var(--shadow)}
+.video-preview{position:relative;aspect-ratio:16/9;background:#02050d;overflow:hidden}
+.video-preview img{width:100%;height:100%;object-fit:cover;opacity:.78}.play-circle{position:absolute;inset:0;margin:auto;width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:rgba(18,124,255,.92);font-size:27px;box-shadow:0 12px 35px rgba(0,0,0,.45)}
+.video-body{padding:18px}.video-body h3{margin:0 0 7px}.video-body p{color:var(--muted);margin:0 0 14px;line-height:1.6}
+.tutorial-modal{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:18px}.tutorial-modal.open{display:flex}
+.tutorial-box{width:min(960px,100%);max-height:90vh;overflow:auto;border:1px solid var(--line);border-radius:24px;background:#07101f;box-shadow:var(--shadow)}
+.tutorial-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}.tutorial-head h3{margin:0}
+.tutorial-screen{min-height:420px;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at center,rgba(18,124,255,.18),transparent 48%),#02050d}
+.tutorial-screen img{max-width:100%;max-height:520px;border-radius:16px}.tutorial-text{font-size:22px;font-weight:900;text-align:center;line-height:1.5}
+.tutorial-controls{display:flex;gap:10px;justify-content:center;padding:18px;flex-wrap:wrap}.progress{height:5px;background:rgba(255,255,255,.1)}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.25s}
+.credentials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:20px 0}.credential{padding:16px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.035)}.credential small{display:block;color:var(--muted);margin-bottom:7px}.credential code{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:10px;color:#dff8ff}
+.qr-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.qr-card{padding:18px;border:1px solid var(--line);border-radius:19px;background:rgba(255,255,255,.035);text-align:center}.qr-card img{width:150px;height:150px;background:#fff;padding:8px;border-radius:13px}.qr-card h3{font-size:16px;margin:12px 0 6px}.qr-card p{color:var(--muted);font-size:13px;min-height:36px}
+.social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:13px}.social-link{padding:9px 12px;border-radius:12px;border:1px solid var(--line);text-decoration:none;background:rgba(255,255,255,.04)}
+.auto-language-note{text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
+@media(max-width:1000px){.video-tutorials{grid-template-columns:repeat(2,1fr)}.qr-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.video-tutorials,.credentials{grid-template-columns:1fr}.qr-grid{grid-template-columns:repeat(2,1fr)}.tutorial-screen{min-height:300px}.tutorial-text{font-size:18px}}
+@media(max-width:460px){.qr-grid{grid-template-columns:1fr}}
+
+
+/* V6 offer presentation upgrade */
+.test-banner{
+  margin:0 auto 28px;max-width:1120px;display:grid;grid-template-columns:1.2fr .8fr;
+  gap:18px;align-items:center;padding:24px;border-radius:24px;
+  border:1px solid rgba(35,207,132,.45);
+  background:linear-gradient(135deg,rgba(35,207,132,.14),rgba(18,124,255,.12));
+  box-shadow:0 24px 65px rgba(0,0,0,.34),inset 0 0 55px rgba(35,207,132,.06)
+}
+.test-banner h3{font-size:clamp(28px,4vw,46px);margin:0 0 8px}
+.test-banner p{margin:0;color:var(--muted);font-size:17px;line-height:1.65}
+.test-badge{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:999px;
+  background:rgba(35,207,132,.14);border:1px solid rgba(35,207,132,.4);
+  color:#9affca;font-weight:950;margin-bottom:12px
+}
+.test-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.offer-saving{
+  display:inline-flex;margin:8px 0 0;padding:6px 10px;border-radius:999px;
+  background:rgba(35,207,132,.12);border:1px solid rgba(35,207,132,.3);
+  color:#8fffc0;font-size:12px;font-weight:950
+}
+.best-value{
+  position:absolute;right:14px;top:14px;padding:6px 9px;border-radius:999px;
+  background:rgba(18,124,255,.14);border:1px solid rgba(55,221,255,.3);
+  color:#bff6ff;font-size:11px;font-weight:950
+}
+.choice-helper{
+  margin-top:26px;padding:26px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(16,28,51,.98),rgba(6,12,24,.98));
+  box-shadow:var(--shadow)
+}
+.choice-helper h3{font-size:28px;margin:0 0 8px;text-align:center}
+.choice-helper>p{text-align:center;color:var(--muted);margin:0 0 20px}
+.choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.choice-card{
+  padding:18px;border-radius:18px;border:1px solid var(--line);
+  background:rgba(255,255,255,.035);text-align:center;transition:.2s
+}
+.choice-card:hover{transform:translateY(-4px);border-color:rgba(55,221,255,.35)}
+.choice-card span{display:block;font-size:34px;margin-bottom:8px}
+.choice-card strong{display:block;font-size:18px;margin-bottom:6px}
+.choice-card small{color:var(--muted);line-height:1.5}
+.sticky-offer{
+  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:1500;
+  display:flex;align-items:center;gap:14px;padding:10px 12px 10px 16px;border-radius:999px;
+  background:rgba(2,5,13,.88);backdrop-filter:blur(16px);border:1px solid rgba(35,207,132,.4);
+  box-shadow:0 18px 50px rgba(0,0,0,.5)
+}
+.sticky-offer strong{color:#9affca}
+.sticky-close{width:36px;height:36px;padding:0;border-radius:50%}
+@media(max-width:900px){.test-banner{grid-template-columns:1fr}.test-actions{justify-content:flex-start}.choice-grid{grid-template-columns:1fr}.sticky-offer{width:calc(100% - 24px);border-radius:18px;justify-content:space-between}}
+
+
+.orbit-stats{
+  padding:54px 0;
+}
+.orbit-stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  max-width:980px;
+  margin:0 auto;
+}
+.orbit-stat{
+  padding:28px 20px;
+  border-radius:24px;
+  text-align:center;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(16,28,51,.98),rgba(6,12,24,.98));
+  box-shadow:var(--shadow);
+}
+.orbit-stat strong{
+  display:block;
+  font-size:clamp(40px,6vw,68px);
+  line-height:1;
+  color:var(--cyan);
+  margin-bottom:10px;
+}
+.orbit-stat span{
+  color:var(--muted);
+  font-weight:900;
+  font-size:16px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+}
+.family-photo-wrap{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+  min-height:380px;
+  background:#050b16;
+}
+.family-photo{
+  width:100%;
+  height:100%;
+  min-height:380px;
+  object-fit:cover;
+  display:block;
+}
+.family-photo-label{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  padding:13px 16px;
+  border-radius:15px;
+  background:rgba(2,5,13,.72);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.14);
+  font-weight:900;
+  text-align:center;
+}
+@media(max-width:760px){
+  .orbit-stats-grid{grid-template-columns:1fr}
+  .family-photo,.family-photo-wrap{min-height:280px}
+}
+
+</style>
+</head>
+<body id="top">
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="orbit-logo.png" alt="ORBIT TV"><div class="brand-copy">ORBIT TV<small>PREMIUM IPTV CENTER</small></div></a>
+    <div class="nav-links">
+      <a class="btn" href="converter.html">Converter</a><a class="btn" href="#offers" data-i18n="offers">Ponude</a>
+      <a class="btn" href="#devices" data-i18n="devices">Uređaji</a>
+      <a class="btn" href="#orbit" data-i18n="players">Playeri</a>
+      <a class="btn" href="#catchup">Catch Up 3 dana</a><a class="btn" href="#downloads" data-i18n="downloads">Preuzimanja</a>
+      <select id="lang">
+        <option value="en">English</option><option value="sr">Srpski</option><option value="hr">Hrvatski</option><option value="bs">Bosanski</option><option value="mk">Македонски</option><option value="sq">Shqip</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="sl">Slovenščina</option><option value="fr">Français</option><option value="es">Español</option>
+      </select><div class="auto-language-note" id="autoLangNote">Auto language</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <video autoplay muted loop playsinline poster="orbit-logo.png"><source src="orbit-promo.mp4" type="video/mp4"></video>
+  <div class="wrap hero-inner">
+    <img class="hero-logo" src="orbit-logo.png" alt="ORBIT TV">
+    <div><span class="kicker" data-i18n="premium">PREMIUM IPTV • LIVE TV • MOVIES • SERIES</span></div>
+    <div class="slogan">💸 <span class="a" data-i18n="payLess">PLATI MANJE</span> • 📺 <span class="b" data-i18n="watchMore">GLEDAJ VIŠE</span> • 🧠 <span class="c" data-i18n="watchSmart">GLEDAJ PAMETNIJE</span></div>
+    <h1>🌍 <span data-i18n="world">GLEDAJTE SVIJET BEZ GRANICA</span></h1>
+    <h2 class="accent" data-i18n="chooseCountries">VI BIRATE DRŽAVE.</h2>
+    <h2 data-i18n="perfectList">MI PRAVIMO SAVRŠENU TV LISTU.</h2>
+    <p data-i18n="heroText">Lista prilagođena vašem izboru država, sa kanalima, filmovima i serijama iz cijelog svijeta.</p>
+    <div class="flag-strip"><div class="flags-track" id="flags"></div></div>
+    <div class="hero-actions"><a class="btn primary" href="#offers" data-i18n="seeOffers">Pogledaj ponude</a><a class="btn" href="#devices" data-i18n="installGuide">Uputstva za instalaciju</a></div>
+  </div>
+</section>
+
+<section class="orbit-stats wrap" id="orbitNumbers">
+  <div class="section-head">
+    <h2>ORBIT TV u brojkama</h2>
+    <p>Jasno, jednostavno i upadljivo — najvažnije brojke na jednom mjestu.</p>
+  </div>
+  <div class="orbit-stats-grid">
+    <div class="orbit-stat"><strong>35,000+</strong><span>Live channels</span></div>
+    <div class="orbit-stat"><strong>65+</strong><span>Countries</span></div>
+    <div class="orbit-stat"><strong>400+</strong><span>Happy customers</span></div>
+  </div>
+</section>
+
+
+<section class="section wrap">
+  <div class="value-grid">
+    <div class="value-card">
+      <span class="kicker" data-i18n="threeConnections">3 KONEKCIJE UKLJUČENE</span>
+      <h2 data-i18n="threeDevices">📺 Gledajte na 3 uređaja istovremeno</h2>
+      <p data-i18n="familyText">Cela porodica može gledati različit sadržaj u isto vreme — na televizoru, telefonu i tabletu.</p>
+      <div class="pills"><span class="pill">📺 Smart TV / Android TV</span><span class="pill">📱 <span data-i18n="phone">Telefon</span></span><span class="pill">💻 <span data-i18n="tablet">Tablet</span></span></div>
+    </div>
+    <div class="family-photo-wrap">
+      <img class="family-photo" src="family-3-devices.png" alt="Family watching ORBIT TV on TV, phone and tablet">
+      <div class="family-photo-label">📺 Smart TV &nbsp; • &nbsp; 📱 Phone &nbsp; • &nbsp; 💻 Tablet</div>
+    </div>
+  </div>
+</section>
+
+<section class="section offers wrap" id="offers">
+  <div class="section-head"><h2 data-i18n="packages">📺 ORBIT TV IPTV + VOD PAKETI</h2><p data-i18n="packagesText">Live TV, filmovi i serije. HD, Full HD i 4K kvalitet. Bez ugovorne obaveze.</p></div>
+  
+<div class="test-banner">
+  <div>
+    <div class="test-badge">🎁 BESPLATAN TEST 24 SATA</div>
+    <h3>Prvo probajte. Onda odlučite.</h3>
+    <p>Dobijate pristup ORBIT TV sadržaju na 24 sata kako biste provjerili kvalitet, stabilnost i izbor kanala prije kupovine paketa.</p>
+  </div>
+  <div class="test-actions">
+    <a class="btn green" href="https://wa.me/38669843976?text=Želim%20besplatan%20ORBIT%20TV%20test%20na%2024%20sata">🎁 Zatraži test 24h</a>
+    <a class="btn" href="https://t.me/dzekcano72">Telegram</a>
+  </div>
+</div>
+<div class="offer-grid">
+    <article class="offer o1"><div class="best-value">ZA PROBU</div><h3>🟢 <span data-i18n="m1">1 MJESEC</span></h3><div class="price">10 €</div><div class="offer-saving">Najkraća obaveza</div><ul><li data-i18n="threeConn">3 konekcije</li><li>Live TV</li><li data-i18n="movies">Filmovi i serije</li><li>EPG TV vodič</li><li data-i18n="logos">Logotipi kanala</li><li data-i18n="noContract">Bez ugovorne obaveze</li></ul><a class="btn green" href="https://wa.me/38669843976?text=Želim%20ORBIT%20TV%20paket%20za%201%20mjesec%20-%2010€" data-i18n="order">📲 Naruči</a></article>
+    <article class="offer o2"><div class="best-value">POPULARAN IZBOR</div><h3>🔵 <span data-i18n="m3">3 MJESECA</span></h3><div class="price">18 €</div><div class="offer-saving">Samo 6 € mjesečno</div><ul><li data-i18n="threeConn">3 konekcije</li><li>Live TV</li><li data-i18n="movies">Filmovi i serije</li><li>EPG TV vodič</li><li data-i18n="logos">Logotipi kanala</li><li data-i18n="noContract">Bez ugovorne obaveze</li></ul><a class="btn primary" href="https://wa.me/38669843976?text=Želim%20ORBIT%20TV%20paket%20za%203%20mjeseca%20-%2018€" data-i18n="order">📲 Naruči</a></article>
+    <article class="offer o3 popular"><div class="tag" data-i18n="popular">NAJPOPULARNIJI</div><h3>🟠 <span data-i18n="m6">6 MJESECI</span></h3><div class="price">28 €</div><div class="offer-saving">Najbolji balans cijene i trajanja</div><ul><li data-i18n="threeConn">3 konekcije</li><li>Live TV</li><li data-i18n="movies">Filmovi i serije</li><li>EPG TV vodič</li><li data-i18n="logos">Logotipi kanala</li><li data-i18n="noContract">Bez ugovorne obaveze</li></ul><a class="btn gold" href="https://wa.me/38669843976?text=Želim%20ORBIT%20TV%20paket%20za%206%20mjeseci%20-%2028€" data-i18n="order">📲 Naruči</a></article>
+    <article class="offer o4"><div class="best-value">NAJVEĆA UŠTEDA</div><h3>🔴 <span data-i18n="m12">12 MJESECI</span></h3><div class="price">35 €</div><div class="offer-saving">Samo 2,92 € mjesečno</div><ul><li data-i18n="threeConn">3 konekcije</li><li>Live TV</li><li data-i18n="movies">Filmovi i serije</li><li>EPG TV vodič</li><li data-i18n="logos">Logotipi kanala</li><li data-i18n="noContract">Bez ugovorne obaveze</li></ul><a class="btn primary" href="https://wa.me/38669843976?text=Želim%20ORBIT%20TV%20paket%20za%2012%20mjeseci%20-%2035€" data-i18n="order">📲 Naruči</a></article>
+  </div>
+  <div class="trust-row"><div class="trust"><span>🌍</span><span data-i18n="worldChannels">Kanali iz cijelog svijeta</span></div><div class="trust"><span>🎬</span><span data-i18n="vod">Filmovi i serije</span></div><div class="trust"><span>📺</span><span>HD • FHD • 4K</span></div><div class="trust"><span>🚫</span><span data-i18n="noContract">Bez ugovorne obaveze</span></div></div>
+</section>
+
+
+<section class="section wrap" id="loginData">
+  <div class="section-head"><h2>🔐 ORBIT TV Login Data</h2><p>Paste the details supplied with your subscription, then copy them with one click.</p></div>
+  <div class="credentials">
+    <div class="credential"><small>Username</small><code id="credUser">YOUR USERNAME</code><button class="copy-credential" data-target="credUser">Copy Username</button></div>
+    <div class="credential"><small>Password</small><code id="credPass">YOUR PASSWORD</code><button class="copy-credential" data-target="credPass">Copy Password</button></div>
+    <div class="credential"><small>Server URL</small><code id="credUrl">YOUR SERVER URL</code><button class="copy-credential" data-target="credUrl">Copy Server URL</button></div>
+  </div>
+  <div class="note">For security, the page does not save real credentials. Replace the placeholder text before publishing a private customer copy.</div>
+
+<div class="choice-helper">
+  <h3>Koji paket je pravi za vas?</h3>
+  <p>Brza preporuka da kupac lakše donese odluku.</p>
+  <div class="choice-grid">
+    <div class="choice-card"><span>🧪</span><strong>Želite prvo probati?</strong><small>Počnite sa besplatnim testom od 24 sata ili paketom od 1 mjeseca.</small></div>
+    <div class="choice-card"><span>⭐</span><strong>Želite najbolji balans?</strong><small>Paket od 6 mjeseci je najpopularniji izbor za većinu korisnika.</small></div>
+    <div class="choice-card"><span>💰</span><strong>Želite najveću uštedu?</strong><small>Paket od 12 mjeseci košta samo 35 € i daje najnižu mjesečnu cijenu.</small></div>
+  </div>
+</div>
+</section>
+
+
+<section class="section wrap" id="converter">
+  <div class="section-head">
+    <h2>🔄 ORBIT TV M3U ⇄ Xtream Converter</h2>
+    <p>Besplatan web alat za pretvaranje M3U linka u Xtream podatke i obratno. Podaci ostaju u vašem browseru.</p>
+  </div>
+  <div class="value-grid">
+    <div class="value-card">
+      <span class="kicker">BESPLATAN ORBIT TV WEB ALAT</span>
+      <h2>M3U ⇄ Xtream Codes</h2>
+      <p>Pretvorite M3U URL u Server URL, Username i Password ili napravite gotov M3U link iz Xtream Codes podataka.</p>
+      <div class="pills">
+        <span class="pill">⚡ Brzo</span>
+        <span class="pill">🛡️ Privatno</span>
+        <span class="pill">📱 Responsive</span>
+      </div>
+      <div class="hero-actions" style="justify-content:flex-start">
+        <a class="btn primary" href="converter.html">Otvori Converter</a>
+      </div>
+    </div>
+    <div class="family-art" style="display:grid;place-items:center;padding:30px">
+      <div style="text-align:center">
+        <img src="orbit-logo.png" alt="ORBIT TV" style="width:min(360px,90%);filter:drop-shadow(0 22px 35px rgba(18,124,255,.35))">
+        <div style="font-size:clamp(38px,6vw,72px);font-weight:950;margin-top:14px;color:var(--cyan)">M3U ⇄ XTREAM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section wrap" id="catchup">
+  <div class="section-head">
+    <h2>⏪ ORBIT TV — vraćanje unazad 3 dana</h2>
+    <p>Na kanalima koji podržavaju Catch Up možete vratiti emisije i programe do 3 dana unazad.</p>
+  </div>
+  <div class="value-grid">
+    <div class="value-card">
+      <span class="kicker">CATCH UP • 3 DANA</span>
+      <h2>Ne propustite omiljenu emisiju</h2>
+      <p>Otvorite TV vodič, izaberite datum i emisiju, pa pokrenite gledanje unazad. Funkcija je dostupna samo na kanalima koje provajder označi za vraćanje.</p>
+      <div class="pills">
+        <span class="pill">⏪ Do 3 dana unazad</span>
+        <span class="pill">📅 Izbor datuma</span>
+        <span class="pill">📺 EPG TV vodič</span>
+      </div>
+    </div>
+    <div class="family-art" style="display:grid;place-items:center;padding:28px">
+      <div style="text-align:center">
+        <div style="font-size:110px">⏪</div>
+        <div style="font-size:clamp(32px,5vw,62px);font-weight:950;color:var(--cyan)">3 DAYS CATCH UP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="devices"><div class="section-head"><h2 data-i18n="deviceGuides">Kompletna uputstva za uređaje</h2><p data-i18n="deviceText">Svaka kartica otvara svoje uputstvo. TiviMate slike koriste se samo za TiviMate.</p></div><div class="search-box"><input id="instructionSearch" type="search" placeholder="Search instructions..."><button class="primary" id="clearSearch">Clear</button></div><h3 class="group-title" data-i18n="tvStreaming">TV i streaming uređaji</h3><div class="grid" id="tvGrid"></div><h3 class="group-title" data-i18n="mobile">Telefoni i tableti</h3><div class="grid" id="mobileGrid"></div><h3 class="group-title" data-i18n="computers">Računari</h3><div class="grid" id="computerGrid"></div></section>
+
+
+<section class="section wrap" id="videoTutorials">
+  <div class="section-head"><h2>🎥 Video Tutorials</h2><p>Animated step-by-step tutorials for every supported device.</p></div>
+  <div class="video-tutorials" id="videoTutorialGrid"></div>
+</section>
+
+<section class="section wrap" id="orbit"><div class="section-head"><h2 data-i18n="orbitTitle">ORBIT TV playeri za Android i Firestick</h2><p data-i18n="orbitText">Svi playeri koje ste poslali ostaju. Ništa nije obrisano.</p></div><div class="grid" id="orbitGrid"></div></section>
+
+
+
+<section class="section wrap" id="qrDownloads">
+  <div class="section-head"><h2>📱 QR Codes for Every Download</h2><p>Scan with a phone camera to open the player download instantly.</p></div>
+  <div class="qr-grid"><div class="qr-card"><img src="tivimate.png" alt="QR code for TiviMate ORBIT TV"><h3>TiviMate ORBIT TV</h3><p>Scan to open download</p><a class="btn green" href="https://s12.up4ever.download:183/d/hpocgrlcpqurgcg46nlaartlgyxvv4hvmzfj4qnaipavveg7xxvzb5rqpt3iqalomzis33ac/Tivimate517.ORBIT%20TV.apk">Open</a></div><div class="qr-card"><img src="smarters-android.png" alt="QR code for IPTV Smarters Android"><h3>IPTV Smarters Android</h3><p>Scan to open download</p><a class="btn green" href="https://www.iptvsmarters.com/iptv-smarters-5.0.apk">Open</a></div><div class="qr-card"><img src="smarters-ios.png" alt="QR code for Smarters Player Lite iOS"><h3>Smarters Player Lite iOS</h3><p>Scan to open download</p><a class="btn green" href="https://apps.apple.com/in/app/smarters-player-lite/id1628995509">Open</a></div><div class="qr-card"><img src="smarters-windows.png" alt="QR code for IPTV Smarters Windows"><h3>IPTV Smarters Windows</h3><p>Scan to open download</p><a class="btn green" href="https://www.iptvsmarters.com/download/?download=windows_app">Open</a></div><div class="qr-card"><img src="smarters-mac.png" alt="QR code for IPTV Smarters macOS"><h3>IPTV Smarters macOS</h3><p>Scan to open download</p><a class="btn green" href="https://www.iptvsmarters.com/download/?download=mac">Open</a></div><div class="qr-card"><img src="smarters-tv.png" alt="QR code for Samsung & LG Smarters"><h3>Samsung & LG Smarters</h3><p>Scan to open download</p><a class="btn green" href="https://www.iptvsmarters.com/#downloads">Open</a></div><div class="qr-card"><img src="leopard.png" alt="QR code for Leopard IPTV Player"><h3>Leopard IPTV Player</h3><p>Scan to open download</p><a class="btn green" href="https://ibo43.streamlineott.top/DREYZILLAAPK_4.3.apk">Open</a></div><div class="qr-card"><img src="orbit-v11.png" alt="QR code for ORBIT TV Player Pro V11"><h3>ORBIT TV Player Pro V11</h3><p>Scan to open download</p><a class="btn green" href="https://github.com/dzek47/OrbitTV_Player_ProV11/releases/download/V1/orbittv.premium.apk">Open</a></div><div class="qr-card"><img src="orbit-4k.png" alt="QR code for ORBIT Pro 4K"><h3>ORBIT Pro 4K</h3><p>Scan to open download</p><a class="btn green" href="https://github.com/dzek47/ORBIT_OTT_PRO_Player_V4/releases/download/1c/ORBIT_OTT_PRO_Player_V4uns.pass.apk">Open</a></div><div class="qr-card"><img src="orbit-v8.png" alt="QR code for ORBIT TV V8"><h3>ORBIT TV V8</h3><p>Scan to open download</p><a class="btn green" href="https://github.com/dzek47/Orbit-IPTV-V8-PLAYER/releases/download/V8/Orbit.IPTV.V8.PLAYER.apk">Open</a></div><div class="qr-card"><img src="orbit-web.png" alt="QR code for ORBIT Web Player"><h3>ORBIT Web Player</h3><p>Scan to open download</p><a class="btn green" href="https://s13.up4ever.download:183/d/hlodyrlcpqurgcg46nlesrbunlskckiwlvcs26gvcbrnm3ebe4yf3p62f236lnvwazl4gxzg/index.html">Open</a></div><div class="qr-card"><img src="protonvpn.png" alt="QR code for ProtonVPN Android"><h3>ProtonVPN Android</h3><p>Scan to open download</p><a class="btn green" href="https://play.google.com/store/apps/details?id=ch.protonvpn.android">Open</a></div></div>
+</section>
+
+<section class="section wrap" id="vpn">
+  <div class="section-head"><h2>🛡️ VPN pomoć za blokirane konekcije</h2><p>Ako internet provajder blokira vezu, koristite besplatnu aplikaciju ProtonVPN.</p></div>
+  <div class="vpn-card">
+    <div>
+      <span class="kicker">ANDROID • PROTONVPN</span>
+      <h2>Kako instalirati ProtonVPN</h2>
+      <p>Nakon povezivanja na VPN ponovo otvorite ORBIT TV player.</p>
+      <div class="vpn-steps">
+        <div class="vpn-step"><div>Instalirajte ProtonVPN iz Google Play trgovine.</div></div>
+        <div class="vpn-step"><div>Otvorite aplikaciju nakon instalacije.</div></div>
+        <div class="vpn-step"><div>Prijavite se ili kreirajte besplatan Proton račun.</div></div>
+        <div class="vpn-step"><div>Pritisnite <strong>Quick Connect / Brzo povezivanje</strong>.</div></div>
+        <div class="vpn-step"><div>Prvi put dozvolite VPN zahtjev pritiskom na <strong>OK</strong>.</div></div>
+        <div class="vpn-step"><div>Kada piše Connected, ponovo pokrenite ORBIT TV.</div></div>
+      </div>
+      <div class="hero-actions" style="justify-content:flex-start"><a class="btn primary" href="https://play.google.com/store/apps/details?id=ch.protonvpn.android">Download ProtonVPN</a></div>
+    </div>
+    <div class="vpn-visual"><div class="vpn-shield">🛡️</div><div class="vpn-badge">✅ Secure connection</div></div>
+  </div>
+</section>
+<section class="section wrap" id="downloads"><div class="section-head"><h2 data-i18n="allDownloads">Sva preuzimanja</h2><p data-i18n="allDownloadsText">Direktni linkovi, Downloader kodovi i kratki URL-ovi.</p></div><div class="downloads" id="downloadGrid"></div></section>
+
+
+<section class="section wrap" id="faq">
+  <div class="section-head"><h2>❓ Najčešća pitanja</h2><p>Brzi odgovori prije kontakta s podrškom.</p></div>
+  <div class="faq">
+    <div class="faq-item"><button class="faq-q">Player se ne povezuje — šta da uradim?<span>＋</span></button><div class="faq-a">Provjerite internet, korisničko ime i lozinku. Ako provajder blokira vezu, uključite ProtonVPN.</div></div>
+    <div class="faq-item"><button class="faq-q">Mogu li koristiti pretplatu na više uređaja?<span>＋</span></button><div class="faq-a">Da. Paket uključuje 3 konekcije. U TiviMate playeru koristite drugi Device # za svaki uređaj.</div></div>
+    <div class="faq-item"><button class="faq-q">Gdje unosim server URL?<span>＋</span></button><div class="faq-a">U IPTV Smarters izaberite Login with Xtream Codes API i unesite Name, Username, Password i URL.</div></div>
+    <div class="faq-item"><button class="faq-q">Kako instaliram APK na Firestick?<span>＋</span></button><div class="faq-a">Instalirajte Downloader, omogućite Apps from Unknown Sources, unesite kod i pritisnite Go.</div></div>
+  </div>
+</section>
+<section class="section wrap" id="help"><div class="section-head"><h2 data-i18n="help">Treba pomoć?</h2><p data-i18n="support">Kontaktirajte ORBIT TV podršku.</p></div><div class="contact"><a href="https://t.me/dzekcano72">💬<br><br>Telegram<br><span style="color:var(--cyan)">@dzekcano72</span></a><a href="https://wa.me/38669843976">📱<br><br>WhatsApp<br><span style="color:var(--cyan)">+386 69 843 976</span></a><a href="mailto:canodzek@gmail.com">✉️<br><br>Email<br><span style="color:var(--cyan)">canodzek@gmail.com</span></a><a href="https://www.facebook.com/groups/944872988454312/">📘<br><br>Facebook<br><span style="color:var(--cyan)">ORBIT TV Group</span></a><a href="https://www.tiktok.com/@dzekcano1972?is_from_webapp=1&sender_device=pc">🎵<br><br>TikTok<br><span style="color:var(--cyan)">@dzekcano1972</span></a></div></section>
+
+<section class="section wrap" id="orbitPro">
+  <div class="section-head">
+    <h2>🚀 ORBIT IPTV PRO</h2>
+    <p>Profesionalni ORBIT player za Android i Firestick.</p>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="visual"><img class="device-logo-img" src="orbit-iptv-pro.svg" alt="ORBIT IPTV PRO"></div>
+      <div class="body">
+        <span class="badge">Android / Firestick</span>
+        <h3>ORBIT IPTV PRO</h3>
+        <p>Downloader Code: <strong>8816936</strong><br>Short URL: <strong>aftv.news/8816936</strong></p>
+        <div class="actions">
+          <a class="btn green" href="https://github.com/orbitiptv/orbit-iptv-pro-/releases/download/v8/orbit-iptv.pro.apk">Direktno preuzimanje</a>
+          <button class="copy" onclick="navigator.clipboard.writeText('8816936')">Kopiraj kod</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<div class="tutorial-modal" id="tutorialModal">
+  <div class="tutorial-box">
+    <div class="tutorial-head"><h3 id="tutorialTitle">Tutorial</h3><button id="tutorialClose">✕</button></div>
+    <div class="progress"><span id="tutorialProgress"></span></div>
+    <div class="tutorial-screen" id="tutorialScreen"></div>
+    <div class="tutorial-controls"><button id="tutorialPrev">← Previous</button><button class="primary" id="tutorialPlay">▶ Play</button><button id="tutorialNext">Next →</button></div>
+  </div>
+</div>
+
+<footer class="pro-footer"><div class="wrap footer-grid">
+    <div class="footer-brand"><img src="orbit-logo.png" alt="ORBIT TV"><p>PLATI MANJE • GLEDAJ VIŠE • GLEDAJ PAMETNIJE</p><div class="social-row"><a class="social-link" href="https://t.me/dzekcano72">Telegram</a><a class="social-link" href="https://wa.me/38669843976">WhatsApp</a><a class="social-link" href="mailto:canodzek@gmail.com">Email</a><a class="social-link" href="https://www.facebook.com/groups/944872988454312/">Facebook</a><a class="social-link" href="https://www.tiktok.com/@dzekcano1972?is_from_webapp=1&sender_device=pc">TikTok</a></div></div>
+    <div><h3>Quick Links</h3><div class="footer-links"><a href="converter.html">M3U ⇄ Xtream Converter</a><a href="#offers">Offers</a><a href="#devices">Installation Guides</a><a href="#orbit">ORBIT Players</a><a href="#vpn">VPN Help</a><a href="#faq">FAQ</a></div></div>
+    <div><h3>Contact</h3><div class="footer-links"><a href="https://t.me/dzekcano72">Telegram: @dzekcano72</a><a href="https://wa.me/38669843976">WhatsApp: +386 69 843 976</a><a href="mailto:canodzek@gmail.com">canodzek@gmail.com</a></div></div>
+    </div><div class="wrap" style="text-align:center;color:var(--muted);margin-top:28px">© 2026 ORBIT TV · Premium IPTV & Installation Center</div></footer><a class="top" href="#top">↑</a>
+
+<script>
+const L={
+en:{offers:"Offers",devices:"Devices",players:"Players",downloads:"Downloads",premium:"PREMIUM IPTV • LIVE TV • MOVIES • SERIES",payLess:"PAY LESS",watchMore:"WATCH MORE",watchSmart:"WATCH SMARTER",world:"WATCH THE WORLD WITHOUT LIMITS",chooseCountries:"YOU CHOOSE THE COUNTRIES.",perfectList:"WE BUILD THE PERFECT TV PLAYLIST.",heroText:"A playlist tailored to your selected countries, with channels, movies and series from around the world.",seeOffers:"See offers",installGuide:"Installation guide",threeConnections:"3 CONNECTIONS INCLUDED",threeDevices:"📺 Watch on 3 devices at the same time",familyText:"The whole family can watch different content at the same time — on TV, phone and tablet.",phone:"Phone",tablet:"Tablet",packages:"📺 ORBIT TV IPTV + VOD PACKAGES",packagesText:"Live TV, movies and series. HD, Full HD and 4K quality. No contract.",m1:"1 MONTH",m3:"3 MONTHS",m6:"6 MONTHS",m12:"12 MONTHS",threeConn:"3 connections",movies:"Movies and series",logos:"Channel logos",noContract:"No contract",order:"📲 Order now",popular:"MOST POPULAR",worldChannels:"Channels from around the world",vod:"Movies and series",deviceGuides:"Complete device instructions",deviceText:"Each card opens its own instructions. TiviMate screenshots are used only for TiviMate.",tvStreaming:"TV & streaming devices",mobile:"Smartphones & tablets",computers:"Computers",orbitTitle:"ORBIT TV players for Android & Firestick",orbitText:"All supplied players are kept. Nothing is removed.",allDownloads:"All downloads",allDownloadsText:"Direct links, Downloader codes and short URLs.",help:"Need help?",support:"Contact ORBIT TV support.",view:"View instructions →",close:"Close instructions ↑",download:"Direct download",openPage:"Open page",copy:"Copy code",copied:"Copied ✓",install:"Install the app",open:"Open the app",login:"Enter ORBIT TV login details",finish:"Finish setup",unknown:"Allow installation from unknown sources if requested.",xtream:"Choose Login with Xtream Codes API.",name:"In the Name field, enter any name.",user:"Enter your ORBIT TV username.",pass:"Enter your ORBIT TV password.",url:"Enter the ORBIT TV server URL supplied with your subscription.",addUser:"Press Enter or Add User and wait for loading.",deviceNote:"Use a different Device # for every additional device.",web:"Open the web player in Chrome, Edge, Safari or another modern browser."},
+sr:{offers:"Ponude",devices:"Uređaji",players:"Playeri",downloads:"Preuzimanja",premium:"PREMIUM IPTV • LIVE TV • FILMOVI • SERIJE",payLess:"PLATI MANJE",watchMore:"GLEDAJ VIŠE",watchSmart:"GLEDAJ PAMETNIJE",world:"GLEDAJTE SVIJET BEZ GRANICA",chooseCountries:"VI BIRATE DRŽAVE.",perfectList:"MI PRAVIMO SAVRŠENU TV LISTU.",heroText:"Lista prilagođena vašem izboru država, sa kanalima, filmovima i serijama iz cijelog svijeta.",seeOffers:"Pogledaj ponude",installGuide:"Uputstva za instalaciju",threeConnections:"3 KONEKCIJE UKLJUČENE",threeDevices:"📺 Gledajte na 3 uređaja istovremeno",familyText:"Cela porodica može gledati različit sadržaj u isto vreme — na televizoru, telefonu i tabletu.",phone:"Telefon",tablet:"Tablet",packages:"📺 ORBIT TV IPTV + VOD PAKETI",packagesText:"Live TV, filmovi i serije. HD, Full HD i 4K kvalitet. Bez ugovorne obaveze.",m1:"1 MJESEC",m3:"3 MJESECA",m6:"6 MJESECI",m12:"12 MJESECI",threeConn:"3 konekcije",movies:"Filmovi i serije",logos:"Logotipi kanala",noContract:"Bez ugovorne obaveze",order:"📲 Naruči",popular:"NAJPOPULARNIJI",worldChannels:"Kanali iz cijelog svijeta",vod:"Filmovi i serije",deviceGuides:"Kompletna uputstva za uređaje",deviceText:"Svaka kartica otvara svoje uputstvo. TiviMate slike koriste se samo za TiviMate.",tvStreaming:"TV i streaming uređaji",mobile:"Telefoni i tableti",computers:"Računari",orbitTitle:"ORBIT TV playeri za Android i Firestick",orbitText:"Svi playeri koje ste poslali ostaju. Ništa nije obrisano.",allDownloads:"Sva preuzimanja",allDownloadsText:"Direktni linkovi, Downloader kodovi i kratki URL-ovi.",help:"Treba pomoć?",support:"Kontaktirajte ORBIT TV podršku.",view:"Otvori uputstvo →",close:"Zatvori uputstvo ↑",download:"Direktno preuzimanje",openPage:"Otvori stranicu",copy:"Kopiraj kod",copied:"Kopirano ✓",install:"Instalirajte aplikaciju",open:"Otvorite aplikaciju",login:"Unesite ORBIT TV podatke",finish:"Završite podešavanje",unknown:"Dozvolite instaliranje iz nepoznatih izvora ako se zatraži.",xtream:"Izaberite Login with Xtream Codes API.",name:"U polje Name unesite bilo koje ime.",user:"Unesite ORBIT TV korisničko ime.",pass:"Unesite ORBIT TV lozinku.",url:"Unesite ORBIT TV server URL koji ste dobili uz pretplatu.",addUser:"Pritisnite Enter ili Add User i sačekajte učitavanje.",deviceNote:"Za svaki dodatni uređaj izaberite drugi Device #.",web:"Otvorite web player u Chrome, Edge, Safari ili drugom modernom pregledaču."}
+};
+L.hr={...L.sr,deviceGuides:"Kompletne upute za uređaje",view:"Otvori upute →",close:"Zatvori upute ↑",familyText:"Cijela obitelj može gledati različit sadržaj u isto vrijeme — na televizoru, telefonu i tabletu."};
+L.bs={...L.sr,deviceGuides:"Kompletne upute za uređaje",view:"Otvori upute →",close:"Zatvori upute ↑",familyText:"Cijela porodica može gledati različit sadržaj u isto vrijeme — na televizoru, telefonu i tabletu."};
+L.mk={...L.en,offers:"Понуди",devices:"Уреди",players:"Плеери",downloads:"Преземања",payLess:"ПЛАТИ ПОМАЛКУ",watchMore:"ГЛЕДАЈ ПОВЕЌЕ",watchSmart:"ГЛЕДАЈ ПОПАМЕТНО",world:"ГЛЕДАЈТЕ ГО СВЕТОТ БЕЗ ГРАНИЦИ",chooseCountries:"ВИЕ ГИ БИРАТЕ ДРЖАВИТЕ.",perfectList:"НИЕ ЈА ПРАВИМЕ СОВРШЕНАТА ТВ ЛИСТА.",seeOffers:"Погледни понуди",installGuide:"Упатства за инсталација",threeConnections:"ВКЛУЧЕНИ 3 КОНЕКЦИИ",threeDevices:"📺 Гледајте на 3 уреди истовремено",packages:"📺 ORBIT TV IPTV + VOD ПАКЕТИ",m1:"1 МЕСЕЦ",m3:"3 МЕСЕЦИ",m6:"6 МЕСЕЦИ",m12:"12 МЕСЕЦИ",order:"📲 Нарачај",popular:"НАЈПОПУЛАРЕН",deviceGuides:"Комплетни упатства",allDownloads:"Сите преземања",help:"Ви треба помош?",view:"Отвори упатство →",close:"Затвори упатство ↑",download:"Директно преземање",copy:"Копирај код",copied:"Копирано ✓"};
+L.sq={...L.en,offers:"Ofertat",devices:"Pajisjet",players:"Player-at",downloads:"Shkarkimet",payLess:"PAGUAJ MË PAK",watchMore:"SHIKO MË SHUMË",watchSmart:"SHIKO MË ZGJUAR",world:"SHIKO BOTËN PA KUFI",chooseCountries:"JU ZGJIDHNI SHTETET.",perfectList:"NE KRIJOJMË LISTËN E PËRSOSUR TV.",seeOffers:"Shiko ofertat",installGuide:"Udhëzimet e instalimit",threeConnections:"3 LIDHJE TË PËRFSHIRA",threeDevices:"📺 Shikoni në 3 pajisje njëkohësisht",packages:"📺 ORBIT TV IPTV + VOD PAKETA",m1:"1 MUAJ",m3:"3 MUAJ",m6:"6 MUAJ",m12:"12 MUAJ",order:"📲 Porosit",popular:"MË POPULLORI",deviceGuides:"Udhëzime të plota",allDownloads:"Të gjitha shkarkimet",help:"Keni nevojë për ndihmë?",view:"Shiko udhëzimet →",close:"Mbyll udhëzimet ↑",download:"Shkarkim direkt",copy:"Kopjo kodin",copied:"U kopjua ✓"};
+L.it={...L.en,offers:"Offerte",devices:"Dispositivi",players:"Player",downloads:"Download",payLess:"PAGA MENO",watchMore:"GUARDA DI PIÙ",watchSmart:"GUARDA IN MODO PIÙ INTELLIGENTE",world:"GUARDA IL MONDO SENZA CONFINI",chooseCountries:"TU SCEGLI I PAESI.",perfectList:"NOI CREIAMO LA PLAYLIST TV PERFETTA.",seeOffers:"Vedi offerte",installGuide:"Guida installazione",threeConnections:"3 CONNESSIONI INCLUSE",threeDevices:"📺 Guarda su 3 dispositivi contemporaneamente",packages:"📺 PACCHETTI ORBIT TV IPTV + VOD",m1:"1 MESE",m3:"3 MESI",m6:"6 MESI",m12:"12 MESI",order:"📲 Ordina",popular:"PIÙ POPOLARE",deviceGuides:"Istruzioni complete",allDownloads:"Tutti i download",help:"Serve aiuto?",view:"Vedi istruzioni →",close:"Chiudi istruzioni ↑",download:"Download diretto",copy:"Copia codice",copied:"Copiato ✓"};
+L.de={...L.en,offers:"Angebote",devices:"Geräte",players:"Player",downloads:"Downloads",payLess:"WENIGER ZAHLEN",watchMore:"MEHR SEHEN",watchSmart:"SMARTER FERNSEHEN",world:"DIE WELT OHNE GRENZEN SEHEN",chooseCountries:"SIE WÄHLEN DIE LÄNDER.",perfectList:"WIR ERSTELLEN DIE PERFEKTE TV-LISTE.",seeOffers:"Angebote ansehen",installGuide:"Installationsanleitung",threeConnections:"3 VERBINDUNGEN INKLUSIVE",threeDevices:"📺 Auf 3 Geräten gleichzeitig schauen",packages:"📺 ORBIT TV IPTV + VOD PAKETE",m1:"1 MONAT",m3:"3 MONATE",m6:"6 MONATE",m12:"12 MONATE",order:"📲 Bestellen",popular:"BELIEBTESTE",deviceGuides:"Vollständige Anleitungen",allDownloads:"Alle Downloads",help:"Brauchen Sie Hilfe?",view:"Anleitung öffnen →",close:"Anleitung schließen ↑",download:"Direktdownload",copy:"Code kopieren",copied:"Kopiert ✓"};
+["sl","fr","es"].forEach(x=>L[x]=L.en);
+
+const items={
+tv:[
+{id:"androidtv",name:"Android TV / TV Box",desc:"TiviMate ORBIT TV",icon:"📺",type:"tivi",url:"https://s12.up4ever.download:183/d/hpocgrlcpqurgcg46nlaartlgyxvv4hvmzfj4qnaipavveg7xxvzb5rqpt3iqalomzis33ac/Tivimate517.ORBIT%20TV.apk",code:"6450135",short:"aftv.news/6450135"},
+{id:"fire",name:"Fire TV / Firestick / Fire TV Cube",desc:"TiviMate ORBIT TV via Downloader",icon:"🔥",type:"tiviFire",url:"https://s12.up4ever.download:183/d/hpocgrlcpqurgcg46nlaartlgyxvv4hvmzfj4qnaipavveg7xxvzb5rqpt3iqalomzis33ac/Tivimate517.ORBIT%20TV.apk",code:"6450135",short:"aftv.news/6450135"},
+{id:"samsung",name:"Samsung Smart TV",desc:"IPTV Smarters Pro",icon:"◼",type:"smartersTV",url:"https://www.iptvsmarters.com/#downloads"},
+{id:"lg",name:"LG Smart TV",desc:"IPTV Smarters Pro",icon:"📺",type:"smartersTV",url:"https://www.iptvsmarters.com/#downloads"}],
+mobile:[
+{id:"android",name:"Android Smartphone / Tablet",desc:"IPTV Smarters v5.0",icon:"🤖",type:"smartersAndroid",url:"https://www.iptvsmarters.com/iptv-smarters-5.0.apk",code:"6468112"},
+{id:"ios",name:"iPhone / iPad",desc:"Smarters Player Lite v1.1.3",icon:"iOS",type:"smartersIOS",url:"https://apps.apple.com/in/app/smarters-player-lite/id1628995509"}],
+computer:[
+{id:"windows",name:"Windows",desc:"IPTV Smarters v1.1.2",icon:"⊞",type:"smartersPC",url:"https://www.iptvsmarters.com/download/?download=windows_app"},
+{id:"mac",name:"macOS",desc:"IPTV Smarters v1.1.2",icon:"",type:"smartersPC",url:"https://www.iptvsmarters.com/download/?download=mac"}]
+};
+const orbit=[
+{name:"ORBIT TV PREMIUM",icon:"⭐",code:"8545138",short:"aftv.news/8545138",url:"https://github.com/dzek47/ORBIT-TV-PREMIUM/releases/download/2C/orbittv.premium.apk"},
+{name:"ORBIT SUPER PLAYER",icon:"🚀",code:"1494402",short:"aftv.news/1494402",url:"https://github.com/dzek47/ORBIT-TVsuper/releases/download/v1/orbit.tv.supre.player.apk"},
+{name:"ORBIT TV SUPER 1",icon:"1",code:"5073033",short:"aftv.news/5073033",url:"https://github.com/dzek47/ORBIT-TVsuper1/releases/download/c1/orbit-tv-super.1.apk"},
+{name:"WEB PLAYER ORBIT TV SUPER",icon:"🌐",short:"https://dzek47.github.io/orbittv-web-player/",url:"https://dzek47.github.io/orbittv-web-player/",web:true},
+{name:"WEB PLAYER ORBIT TV SUPER — iPHONE",icon:"",short:"https://dzek47.github.io/orbittv-web-player-iPhone/",url:"https://dzek47.github.io/orbittv-web-player-iPhone/",web:true,iphone:true},
+{name:"LEOPARD IPTV PLAYER",icon:"🐆",code:"3494908",short:"aftv.news/3494908",url:"https://ibo43.streamlineott.top/DREYZILLAAPK_4.3.apk"},
+{name:"ORBIT TV PLAYER PRO V11",icon:"🚀",code:"5578580",short:"aftv.news/5578580",url:"https://github.com/dzek47/OrbitTV_Player_ProV11/releases/download/V1/orbittv.premium.apk"},
+{name:"ORBIT PRO 4K USER-PASS",icon:"4K",code:"4867630",short:"aftv.news/4867630",url:"https://github.com/dzek47/ORBIT_OTT_PRO_Player_V4/releases/download/1c/ORBIT_OTT_PRO_Player_V4uns.pass.apk"},
+{name:"ORBIT IPTV V8",icon:"V8",code:"7815002",short:"aftv.news/7815002",url:"https://github.com/dzek47/Orbit-IPTV-V8-PLAYER/releases/download/V8/Orbit.IPTV.V8.PLAYER.apk"},
+{name:"ORBIT IPTV WEB PLAYER SUPER",icon:"🌐",short:"https://www.up-4ever.net/9x950m841o2x",url:"https://s13.up4ever.download:183/d/hlodyrlcpqurgcg46nlesrbunlskckiwlvcs26gvcbrnm3ebe4yf3p62f236lnvwazl4gxzg/index.html",web:true},
+{name:"ORBIT IPTV PRO V1 PLAYER",icon:"PRO",code:"8330599",short:"aftv.news/8330599",url:"https://github.com/orbitiptv/ORBIT.IPTV.PRO-V1.github.io/releases/download/V1/ORBIT.IPTV.PRO.V1.apk"},
+{name:"STREAMVALUT ORBIT TV",icon:"▶",code:"8051602",short:"aftv.news/8051602",url:"https://www.up-4ever.net/pj6jmawt54oo"},
+{name:"STREAMVALUT ORBIT TV — DIRECT",icon:"▶",short:"Direktan APK link",url:"https://s10.up4ever.download:183/d/adojqjdcpqurgcg46flaavr3guzmete4ahwtop7j4xqlk3jbfiyoocpcnhoyhbrcgv2c4v6y/Streamvalut%20orbit%20tv.apk"},
+{name:"ORBIT BUM PRO V2",icon:"V2",code:"6788437",short:"aftv.news/6788437",url:"https://github.com/orbitiptv/ORBIT-BUM-PRO-V2/releases/download/V2/ORBIT.BUM.PRO.V2.apk"},
+{name:"ORBIT PLAYER V10",icon:"V10",code:"7520217",short:"aftv.news/7520217",url:"https://github.com/orbitiptv/ORBIT-PLAYER-V10/releases/download/V10/ORBIT.PLAYER.V10.apk"},
+{name:"ORBIT IPTV PRO WEB — LOKALNI",icon:"WEB",short:"orbit-web-player.html",url:"orbit-web-player.html",web:true}
+];
+const flags="🇦🇱 🇩🇪 🇦🇹 🇨🇭 🇧🇦 🇷🇸 🇭🇷 🇲🇪 🇲🇰 🇸🇮 🇮🇹 🇬🇧 🇫🇷 🇪🇸 🇵🇹 🇳🇱 🇧🇪 🇱🇺 🇸🇪 🇳🇴 🇩🇰 🇫🇮 🇵🇱 🇨🇿 🇸🇰 🇭🇺 🇷🇴 🇧🇬 🇬🇷 🇹🇷 🇺🇸 🇨🇦 🇲🇽 🇧🇷 🇦🇷 🇨🇱 🇨🇴 🇵🇪 🇺🇾 🇵🇾 🇦🇺 🇳🇿 🇯🇵 🇰🇷 🇨🇳 🇮🇳 🇹🇭 🇻🇳 🇮🇩 🇵🇭 🇦🇪 🇶🇦 🇰🇼 🇴🇲 🇸🇦 🇪🇬 🇮🇱 🇮🇶 🇮🇷 🇱🇧 🇲🇦 🇩🇿 🇹🇳 🇿🇦 🇳🇬 🇰🇪 🇪🇹 🇷🇺 🇺🇦 🇧🇾".split(" ");
+document.getElementById("flags").innerHTML=[...flags,...flags].map(f=>`<span class="flag">${f}</span>`).join("");
+function t(){return L[document.getElementById("lang").value]||L.en}
+function smarterSteps(){let x=t();return [x.install,x.open,x.xtream,x.name,x.user,x.pass,x.url,x.addUser]}
+function guide(i){let x=t(),s=[];
+if(i.type==="tivi")s=["Open a web browser on your Android TV. If needed, install TV Bro from Google Play Store.","Open the direct APK link or use Downloader code 6450135.",x.unknown,"Open TiviMate and click Add Playlist.","Select Device #1.",x.deviceNote,"Enter your ORBIT TV username and password.","Click Next and wait for Processing to finish.","Click Done."];
+if(i.type==="tiviFire")s=["Open Settings on Fire TV.","Open My Fire TV or Device.","Open Developer options and enable Apps from Unknown Sources.","Search for and install the Downloader app.","Open Downloader and enter code 6450135.","Select Go, download the APK and install it.",x.unknown,"Open TiviMate and click Add Playlist.","Select Device #1.",x.deviceNote,"Enter ORBIT TV username and password.","Click Next, wait for processing, then click Done."];
+if(i.type==="smartersTV")s=["Open the app store on your Samsung or LG TV.","Search for IPTV Smarters.","Install IPTV Smarters Pro.","Open the app and choose TV if asked.","Accept the app terms.",...smarterSteps().slice(2)];
+if(i.type==="smartersAndroid")s=["Open a web browser on your Android phone or tablet.","Download IPTV Smarters v5.0 using the direct button or Downloader code 6468112.","Open the APK and install it.",x.unknown,"Open the app and choose Mobile if asked.","Accept the terms.",...smarterSteps().slice(2)];
+if(i.type==="smartersIOS")s=["Open the App Store using the button below.","Install Smarters Player Lite v1.1.3.","Open the app and choose Mobile if asked.","Accept the terms.",...smarterSteps().slice(2)];
+if(i.type==="smartersPC")s=["Download IPTV Smarters using the direct button below.","Install the application and open it.","Click Add User if requested.","Accept the app terms.",...smarterSteps().slice(3)];
+let pics=(i.type==="tivi"||i.type==="tiviFire")?`<img class="shot" src="tivimate-add-playlist.png"><img class="shot" src="tivimate-device.png"><img class="shot" src="tivimate-login.png"><img class="shot" src="tivimate-next.png"><img class="shot" src="tivimate-done.png">`:"";
+return `<div class="guide">${i.code?`<div class="codebox"><div><small>Downloader Code</small><br><strong>${i.code}</strong>${i.short?`<br><small>${i.short}</small>`:""}</div><button class="gold copy" data-copy="${i.code}">${x.copy}</button></div>`:""}<div class="steps">${s.map(v=>`<div class="step"><div><p>${v}</p></div></div>`).join("")}</div>${pics}</div>`}
+function card(i){let x=t();const map={androidtv:"android-tv",fire:"fire-tv",samsung:"samsung",lg:"lg",android:"android",ios:"ios",windows:"windows",mac:"macos"};return `<article class="card"><div class="visual"><img class="device-logo-img" src="${map[i.id]}.svg" alt="${i.name}"></div><div class="body"><span class="badge">${i.desc}</span><h3>${i.name}</h3><p>${i.type.startsWith("tivi")?"TiviMate ORBIT TV":"IPTV Smarters Pro"}</p><div class="actions"><button class="primary toggle">${x.view}</button><a class="btn green" href="${i.url}">${i.type==="smartersTV"?x.openPage:x.download}</a></div>${guide(i)}</div></article>`}
+function orbitCard(p){let x=t();let steps=p.iphone?["Na iPhone-u otvorite link u Safari pregledniku.","Pritisnite Share (kvadrat sa strelicom).","Izaberite Add to Home Screen.","Pritisnite Add. OrbitTV će se pojaviti na početnom ekranu kao aplikacija."]:p.web?[x.web]:[x.install,x.unknown,x.open,x.login,x.finish];const map={"LEOPARD IPTV PLAYER":"leopard","ORBIT TV PLAYER PRO V11":"orbit-v11","ORBIT PRO 4K USER-PASS":"orbit-4k","ORBIT IPTV V8":"orbit-v8"};let art=map[p.name]?`<img class="device-logo-img" src="${map[p.name]}.svg" alt="${p.name}">`:`<div style="font-size:64px;font-weight:950;color:var(--cyan)">${p.icon||"ORBIT"}</div>`;return `<article class="card"><div class="visual">${art}</div><div class="body"><span class="badge">${p.web?"Web Player":"Android / Firestick · Username + Password"}</span><h3>${p.name}</h3><p>${p.web?x.web:"ORBIT TV username + password login"}</p><div class="actions"><button class="primary toggle">${x.view}</button><a class="btn green" href="${p.url}">${p.web?x.openPage:x.download}</a></div><div class="guide">${p.code?`<div class="codebox"><div><small>Downloader Code</small><br><strong>${p.code}</strong><br><small>${p.short}</small></div><button class="gold copy" data-copy="${p.code}">${x.copy}</button></div>`:`<div class="codebox"><div><small>Short URL / Link</small><br><strong style="font-size:15px;letter-spacing:0">${p.short}</strong></div><a class="btn gold" href="${p.url}">${x.openPage}</a></div>`}<div class="steps">${steps.map(v=>`<div class="step"><div><p>${v}</p></div></div>`).join("")}</div></div></div></article>`}
+function render(){let x=t();document.querySelectorAll("[data-i18n]").forEach(e=>{if(x[e.dataset.i18n])e.textContent=x[e.dataset.i18n]});document.getElementById("tvGrid").innerHTML=items.tv.map(card).join("");document.getElementById("mobileGrid").innerHTML=items.mobile.map(card).join("");document.getElementById("computerGrid").innerHTML=items.computer.map(card).join("");document.getElementById("orbitGrid").innerHTML=orbit.map(orbitCard).join("");let all=[...items.tv,...items.mobile,...items.computer,...orbit];document.getElementById("downloadGrid").innerHTML=all.map(i=>`<div class="download"><h3>${i.name}</h3><p>${i.code?`Downloader: ${i.code}${i.short?` · ${i.short}`:""}`:(i.short||i.desc||"")}</p><a class="btn green" href="${i.url}">${i.web?x.openPage:x.download}</a>${i.code?` <button class="copy" data-copy="${i.code}">${x.copy}</button>`:""}</div>`).join("");bind();localStorage.setItem("orbitLang",document.getElementById("lang").value)}
+function bind(){document.querySelectorAll(".toggle").forEach(b=>b.onclick=()=>{let g=b.closest(".body").querySelector(".guide");g.classList.toggle("open");b.textContent=g.classList.contains("open")?t().close:t().view});document.querySelectorAll(".copy").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent=t().copied;setTimeout(()=>b.textContent=t().copy,1200)}catch(e){alert(b.dataset.copy)}})}
+document.getElementById("lang").value=localStorage.getItem("orbitLang")||"sr";document.getElementById("lang").onchange=render;render();
+
+document.addEventListener("DOMContentLoaded",()=>{
+ const search=document.getElementById("instructionSearch"),clear=document.getElementById("clearSearch");
+ const apply=()=>{const q=(search?.value||"").toLowerCase().trim();document.querySelectorAll("#devices .card,#orbit .card").forEach(c=>c.style.display=!q||c.innerText.toLowerCase().includes(q)?"":"none")};
+ if(search)search.addEventListener("input",apply);
+ if(clear)clear.addEventListener("click",()=>{search.value="";apply();search.focus()});
+ document.querySelectorAll(".faq-q").forEach(b=>b.addEventListener("click",()=>b.parentElement.classList.toggle("open")));
+});
+
+// V5: automatic browser language
+const browserLang=(navigator.language||"en").toLowerCase();
+if(!localStorage.getItem("orbitLang")){
+  const map={sr:"sr",hr:"hr",bs:"bs",mk:"mk",sq:"sq",it:"it",de:"de",sl:"sl",fr:"fr",es:"es",en:"en"};
+  const short=browserLang.split("-")[0];
+  document.getElementById("lang").value=map[short]||"en";
+}
+const note=document.getElementById("autoLangNote");
+if(note) note.textContent="Auto: "+(navigator.language||"English");
+
+// Credentials copy buttons
+document.querySelectorAll(".copy-credential").forEach(btn=>btn.addEventListener("click",async()=>{
+  const value=document.getElementById(btn.dataset.target).textContent.trim();
+  try{await navigator.clipboard.writeText(value);const old=btn.textContent;btn.textContent="Copied ✓";setTimeout(()=>btn.textContent=old,1200)}catch(e){alert(value)}
+}));
+
+// Animated tutorial data
+const tutorialData=[
+ {title:"Android TV — TiviMate",thumb:"android-tv.svg",steps:[
+  {img:"tivimate-add-playlist.png",text:"Open TiviMate and select Add Playlist."},
+  {img:"tivimate-device.png",text:"Select Device #1. Use another Device # on each additional TV."},
+  {img:"tivimate-login.png",text:"Enter your ORBIT TV username and password."},
+  {img:"tivimate-next.png",text:"Select Next and wait for processing."},
+  {img:"tivimate-done.png",text:"Select Done to finish setup."}]},
+ {title:"Fire TV / Firestick",thumb:"fire-tv.svg",steps:[
+  {text:"Open Settings → My Fire TV → Developer Options."},
+  {text:"Enable Install Unknown Apps for Downloader."},
+  {text:"Install Downloader and enter code 6450135."},
+  {img:"tivimate-add-playlist.png",text:"Open TiviMate and select Add Playlist."},
+  {img:"tivimate-login.png",text:"Enter your ORBIT TV username and password."}]},
+ {title:"Samsung Smart TV",thumb:"samsung.svg",steps:[
+  {text:"Open the Samsung App Store and search IPTV Smarters."},
+  {text:"Install IPTV Smarters Pro and choose TV mode."},
+  {text:"Choose Login with Xtream Codes API."},
+  {text:"Enter Name, Username, Password and Server URL."}]},
+ {title:"LG Smart TV",thumb:"lg.svg",steps:[
+  {text:"Open LG Content Store and search IPTV Smarters."},
+  {text:"Install and open IPTV Smarters Pro."},
+  {text:"Choose Login with Xtream Codes API."},
+  {text:"Enter your ORBIT TV login details and Add User."}]},
+ {title:"Android Phone / Tablet",thumb:"android.svg",steps:[
+  {text:"Download IPTV Smarters v5.0 or use Downloader code 6468112."},
+  {text:"Install the APK and allow unknown sources if requested."},
+  {text:"Open the app and choose Mobile mode."},
+  {text:"Enter your ORBIT TV Xtream Codes details."}]},
+ {title:"iPhone / iPad",thumb:"ios.svg",steps:[
+  {text:"Install Smarters Player Lite from the App Store."},
+  {text:"Open the app and choose Mobile mode."},
+  {text:"Choose Login with Xtream Codes API."},
+  {text:"Enter Name, Username, Password and Server URL."}]},
+ {title:"Windows",thumb:"windows.svg",steps:[
+  {text:"Download and install IPTV Smarters for Windows."},
+  {text:"Open the app and select Add User."},
+  {text:"Enter your ORBIT TV Xtream Codes details."}]},
+ {title:"macOS",thumb:"macos.svg",steps:[
+  {text:"Download IPTV Smarters for macOS."},
+  {text:"Install and open the application."},
+  {text:"Add your ORBIT TV Xtream Codes account."}]}
+];
+const tutorialGrid=document.getElementById("videoTutorialGrid");
+if(tutorialGrid) tutorialGrid.innerHTML=tutorialData.map((v,i)=>`<article class="video-card"><div class="video-preview"><img src="${v.thumb}" alt="${v.title}"><button class="play-circle" data-tutorial="${i}">▶</button></div><div class="video-body"><h3>${v.title}</h3><p>Interactive animated installation tutorial.</p><button class="primary open-tutorial" data-tutorial="${i}">Play tutorial</button></div></article>`).join("");
+
+let ti=0,si=0,timer=null;
+const modal=document.getElementById("tutorialModal"),screen=document.getElementById("tutorialScreen"),titleEl=document.getElementById("tutorialTitle"),progress=document.getElementById("tutorialProgress"),playBtn=document.getElementById("tutorialPlay");
+function showStep(){
+ const tut=tutorialData[ti],step=tut.steps[si];titleEl.textContent=tut.title;
+ screen.innerHTML=step.img?`<div><img src="${step.img}" alt=""><div class="tutorial-text">${step.text}</div></div>`:`<div class="tutorial-text">${step.text}</div>`;
+ progress.style.width=((si+1)/tut.steps.length*100)+"%";
+}
+function openTutorial(i){ti=Number(i);si=0;modal.classList.add("open");showStep()}
+function stopTutorial(){if(timer){clearInterval(timer);timer=null;playBtn.textContent="▶ Play"}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-tutorial]");if(b)openTutorial(b.dataset.tutorial)});
+document.getElementById("tutorialClose")?.addEventListener("click",()=>{stopTutorial();modal.classList.remove("open")});
+document.getElementById("tutorialNext")?.addEventListener("click",()=>{const n=tutorialData[ti].steps.length;si=(si+1)%n;showStep()});
+document.getElementById("tutorialPrev")?.addEventListener("click",()=>{const n=tutorialData[ti].steps.length;si=(si-1+n)%n;showStep()});
+playBtn?.addEventListener("click",()=>{if(timer){stopTutorial();return}playBtn.textContent="⏸ Pause";timer=setInterval(()=>{const n=tutorialData[ti].steps.length;if(si===n-1){stopTutorial();return}si++;showStep()},2200)});
+modal?.addEventListener("click",e=>{if(e.target===modal){stopTutorial();modal.classList.remove("open")}});
+
+
+document.getElementById("stickyClose")?.addEventListener("click",()=>{
+  document.getElementById("stickyOffer").style.display="none";
+  sessionStorage.setItem("hideOrbitTest","1");
+});
+if(sessionStorage.getItem("hideOrbitTest")==="1"){
+  const s=document.getElementById("stickyOffer"); if(s) s.style.display="none";
+}
+
+</script>
+
+<div class="sticky-offer" id="stickyOffer">
+  <span>🎁 <strong>Besplatan test 24 sata</strong> — prvo provjerite kvalitet</span>
+  <a class="btn green" href="https://wa.me/38669843976?text=Želim%20besplatan%20ORBIT%20TV%20test%20na%2024%20sata">Zatraži test</a>
+  <button class="sticky-close" id="stickyClose">✕</button>
+</div>
+
+</body>
+</html>

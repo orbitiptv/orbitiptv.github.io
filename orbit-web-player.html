@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="bs">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>ORBIT IPTV PRO WEB</title>
+<style>
+:root{
+  --bg:#02050b;--panel:#091321;--panel2:#0e2036;--blue:#22b8ff;--green:#31b87d;
+  --text:#fff;--soft:#b7cae0;--danger:#ff5f6d;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+button,input,select{font:inherit}
+.hidden{display:none!important}
+.app{min-height:100vh;background:radial-gradient(circle at 50% 20%,#0b3154 0,#06101d 35%,#02050b 75%)}
+.topbar{height:84px;display:flex;align-items:center;gap:18px;padding:12px 24px;background:rgba(2,5,11,.86);backdrop-filter:blur(10px);position:sticky;top:0;z-index:20}
+.logo{height:64px;cursor:pointer;object-fit:contain}
+.topbar .spacer{flex:1}
+.icon-btn{width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:white;font-size:22px;cursor:pointer}
+.icon-btn:hover,.icon-btn:focus{background:#173454;outline:2px solid var(--blue)}
+.statusbar{display:flex;gap:22px;padding:14px 26px;color:#fff;background:rgba(2,5,11,.8);font-size:15px}
+.screen{padding:24px}
+.login-wrap{min-height:100vh;display:grid;grid-template-columns:minmax(320px,420px) minmax(360px,1fr);gap:36px;align-items:center;padding:40px}
+.login-card,.profiles-card{background:rgba(9,19,33,.96);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:24px;box-shadow:0 20px 70px rgba(0,0,0,.35)}
+.login-card .logo{width:100%;height:120px}
+.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}
+.field input,.field select{width:100%;padding:14px;border-radius:14px;border:1px solid #29435e;background:#06101d;color:#fff}
+.primary,.secondary,.danger{border:0;border-radius:13px;padding:13px 16px;cursor:pointer;font-weight:800}
+.primary{background:var(--blue);color:#00101d}
+.secondary{background:#173454;color:#fff}
+.danger{background:var(--danger);color:#fff}
+.profile-row{display:flex;gap:10px;align-items:center;background:#0e2036;border-radius:14px;padding:12px;margin:10px 0}
+.profile-row .name{flex:1}
+.home-grid{display:grid;grid-template-columns:1fr 1.95fr;gap:22px;min-height:560px}
+.home-right{display:grid;grid-template-rows:1fr 84px;gap:18px}
+.home-top{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tile{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:#123;min-height:240px}
+.tile:hover,.tile:focus{transform:scale(1.02);outline:none;border-color:#fff;box-shadow:0 0 0 4px rgba(34,184,255,.28)}
+.tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.72}
+.tile .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.58))}
+.tile .content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.tile .bigicon{font-size:88px}
+.tile h2{font-size:30px;margin:14px 0 0}
+.tile .foot{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:rgba(0,0,0,.28);display:flex;justify-content:space-between}
+.small-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.small-tile{border:0;border-radius:14px;background:#299b77;color:white;padding:10px;cursor:pointer;font-weight:900;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+.small-tile span:first-child{font-size:24px}
+.small-tile span:last-child{font-size:11px;line-height:1.15;text-align:center;margin-top:4px}
+.small-tile:hover,.small-tile:focus{outline:3px solid #fff;background:#39ba7f}
+.browser{display:grid;grid-template-columns:230px 300px 1fr;gap:14px;height:calc(100vh - 150px)}
+.categories,.items,.details-panel{background:rgba(9,19,33,.94);border-radius:18px;padding:10px;overflow:auto}
+.cat{padding:12px;border-radius:11px;margin:5px 0;cursor:pointer;white-space:normal;line-height:1.25}
+.cat.active{background:var(--green);color:#06101d;font-weight:900}
+.item-row{display:flex;gap:10px;align-items:center;padding:8px;border-radius:11px;background:#0e2036;margin:6px 0;cursor:pointer}
+.item-row:hover,.item-row.active{outline:2px solid var(--blue);background:#143455}
+.item-row img{width:44px;height:44px;object-fit:cover;border-radius:9px}
+.preview{display:flex;flex-direction:column;gap:12px;height:100%}
+video{width:100%;background:#000;border-radius:18px;min-height:300px}
+.preview-info{background:#091321;border-radius:16px;padding:14px}
+.poster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.poster{cursor:pointer}
+.poster img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:15px;border:3px solid transparent}
+.poster:hover img,.poster.selected img{border-color:var(--green);box-shadow:0 0 0 4px rgba(49,184,125,.25)}
+.poster h4{margin:7px 2px 0}
+.poster p{margin:3px 2px;color:var(--soft);font-size:12px}
+.white-menu{background:white;color:black;border-radius:18px;padding:10px;overflow:auto}
+.white-menu .cat{color:black}
+.white-menu .cat.active{background:var(--green);color:#02140d}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;display:flex;align-items:center;justify-content:center}
+.modal video{width:100vw;height:100vh;border-radius:0;object-fit:contain}
+.modal-logo{position:absolute;top:16px;right:20px;height:70px;cursor:pointer;z-index:102}
+.back-logo{cursor:pointer}
+.controls-top{position:absolute;top:16px;left:16px;z-index:103;display:flex;gap:10px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111d2d;color:#fff;padding:12px 18px;border-radius:12px;z-index:200}
+.settings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.setting{background:#091321;padding:16px;border-radius:14px}
+@media(max-width:900px){
+ .login-wrap{grid-template-columns:1fr;padding:18px}
+ .home-grid{grid-template-columns:1fr}
+ .home-right{grid-template-rows:auto auto}
+ .home-top{grid-template-columns:1fr}
+ .small-row{grid-template-columns:repeat(2,1fr)}
+ .browser{grid-template-columns:1fr;height:auto}
+ .categories,.items,.details-panel{max-height:300px}
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mpegts.js@1.8.0/dist/mpegts.min.js"></script>
+
+</head>
+<body>
+<div id="app" class="app"></div>
+<script>
+const SERVER='http://orbitiptv.ottc.xyz:80';
+const LS_PROFILES='orbit_profiles_v1';
+const LS_SETTINGS='orbit_settings_v1';
+
+const i18n={
+ bs:{live:'LIVE TV',movies:'FILMOVI',series:'SERIJE',favorites:'FAVORITI',search:'PRETRAGA',profiles:'PROFILI',settings:'POSTAVKE',catchup:'CATCH UP',open:'Otvori',login:'PRIJAVA',username:'Korisničko ime',password:'Lozinka',language:'Jezik',logout:'Odjava'},
+ sr:{live:'TV UŽIVO',movies:'FILMOVI',series:'SERIJE',favorites:'OMILJENI',search:'PRETRAGA',profiles:'PROFILI',settings:'PODEŠAVANJA',catchup:'GLEDANJE UNAZAD',open:'Otvori',login:'PRIJAVA',username:'Korisničko ime',password:'Lozinka',language:'Jezik',logout:'Odjava'},
+ hr:{live:'TV UŽIVO',movies:'FILMOVI',series:'SERIJE',favorites:'OMILJENI',search:'PRETRAGA',profiles:'PROFILI',settings:'POSTAVKE',catchup:'GLEDANJE UNATRAG',open:'Otvori',login:'PRIJAVA',username:'Korisničko ime',password:'Lozinka',language:'Jezik',logout:'Odjava'},
+ mk:{live:'ТВ ВО ЖИВО',movies:'ФИЛМОВИ',series:'СЕРИИ',favorites:'ОМИЛЕНИ',search:'ПРЕБАРУВАЊЕ',profiles:'ПРОФИЛИ',settings:'ПОСТАВКИ',catchup:'ГЛЕДАЈ НАНАЗАД',open:'Отвори',login:'НАЈАВА',username:'Корисничко име',password:'Лозинка',language:'Јазик',logout:'Одјава'},
+ sq:{live:'TV LIVE',movies:'FILMA',series:'SERIALE',favorites:'TË PREFERUARAT',search:'KËRKO',profiles:'PROFILET',settings:'CILËSIMET',catchup:'SHIKO PRAPA',open:'Hap',login:'HYR',username:'Përdoruesi',password:'Fjalëkalimi',language:'Gjuha',logout:'Dil'},
+ sl:{live:'TV V ŽIVO',movies:'FILMI',series:'SERIJE',favorites:'PRILJUBLJENO',search:'ISKANJE',profiles:'PROFILI',settings:'NASTAVITVE',catchup:'OGLED ZA NAZAJ',open:'Odpri',login:'PRIJAVA',username:'Uporabniško ime',password:'Geslo',language:'Jezik',logout:'Odjava'},
+ en:{live:'LIVE TV',movies:'MOVIES',series:'SERIES',favorites:'FAVORITES',search:'SEARCH',profiles:'PROFILES',settings:'SETTINGS',catchup:'CATCH UP',open:'Open',login:'LOGIN',username:'Username',password:'Password',language:'Language',logout:'Logout'},
+ de:{live:'LIVE TV',movies:'FILME',series:'SERIEN',favorites:'FAVORITEN',search:'SUCHE',profiles:'PROFILE',settings:'EINSTELLUNGEN',catchup:'MEDIATHEK',open:'Öffnen',login:'ANMELDEN',username:'Benutzername',password:'Passwort',language:'Sprache',logout:'Abmelden'},
+ it:{live:'TV IN DIRETTA',movies:'FILM',series:'SERIE',favorites:'PREFERITI',search:'CERCA',profiles:'PROFILI',settings:'IMPOSTAZIONI',catchup:'REPLAY TV',open:'Apri',login:'ACCEDI',username:'Nome utente',password:'Password',language:'Lingua',logout:'Esci'}
+};
+
+let activeHls=null, activeMpegTs=null;
+
+let state={
+ screen:'login',profiles:load(LS_PROFILES,[]),settings:load(LS_SETTINGS,{lang:'bs',audio:'',subtitle:'',city:'Ljubljana'}),
+ activeProfile:null, auth:null, library:{liveCats:[],live:[],movieCats:[],movies:[],seriesCats:[],series:[]},
+ selected:null, activeCat:null, favorites:load('orbit_favorites',[])
+};
+
+function load(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function t(k){return (i18n[state.settings.lang]||i18n.en)[k]||k}
+function toast(msg){const x=document.createElement('div');x.className='toast';x.textContent=msg;document.body.appendChild(x);setTimeout(()=>x.remove(),2600)}
+
+async function api(action='',extra={}){
+ const p=state.activeProfile;
+ const url=new URL(SERVER+'/player_api.php');
+ url.searchParams.set('username',p.username);url.searchParams.set('password',p.password);
+ if(action)url.searchParams.set('action',action);
+ Object.entries(extra).forEach(([k,v])=>url.searchParams.set(k,v));
+ const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);return r.json();
+}
+function streamUrl(type,id,ext='m3u8'){
+ const p=state.activeProfile;
+ if(type==='live')return `${SERVER}/live/${p.username}/${p.password}/${id}.${ext||'m3u8'}`;
+ if(type==='movie')return `${SERVER}/movie/${p.username}/${p.password}/${id}.${ext||'mp4'}`;
+ return `${SERVER}/series/${p.username}/${p.password}/${id}.${ext||'mp4'}`;
+}
+
+async function login(profile){
+ state.activeProfile=profile;
+ try{
+  const data=await api();
+  if(String(data?.user_info?.auth)!=='1')throw new Error(data?.user_info?.message||'Login failed');
+  state.auth=data;
+  profile.name=profile.name||profile.username;
+  const idx=state.profiles.findIndex(x=>x.id===profile.id);
+  if(idx>=0)state.profiles[idx]=profile;else state.profiles.push(profile);
+  save(LS_PROFILES,state.profiles);
+  await loadLibrary();
+  state.screen='home';render();
+ }catch(e){toast('Greška: '+e.message)}
+}
+async function loadLibrary(){
+ try{
+  const [lc,l,mc,m,sc,s]=await Promise.all([
+   api('get_live_categories'),api('get_live_streams'),
+   api('get_vod_categories'),api('get_vod_streams'),
+   api('get_series_categories'),api('get_series')
+  ]);
+  state.library.liveCats=lc||[];state.library.live=l||[];
+  state.library.movieCats=mc||[];state.library.movies=m||[];
+  state.library.seriesCats=sc||[];state.library.series=s||[];
+ }catch(e){toast('Dio liste nije učitan: '+e.message)}
+}
+function logo(){return `<img src="orbit-logo.png" class="logo back-logo" onclick="goBack()" alt="ORBIT TV">`}
+function goBack(){
+ if(state.screen==='home'){state.screen='login'}
+ else if(state.screen==='login')return;
+ else state.screen='home';
+ render();
+}
+function topbar(){
+ return `<div class="topbar">${logo()}<div class="spacer"></div>
+ <button class="icon-btn" onclick="openScreen('search')">⌕</button>
+ <button class="icon-btn" onclick="openScreen('profiles')">👤</button>
+ <button class="icon-btn" onclick="openScreen('settings')">⚙</button></div>`;
+}
+function openScreen(s){state.screen=s;state.selected=null;state.activeCat=null;render()}
+function render(){
+ const app=document.getElementById('app');
+ if(state.screen==='login')app.innerHTML=renderLogin();
+ else if(state.screen==='home')app.innerHTML=topbar()+renderHome();
+ else if(state.screen==='live')app.innerHTML=topbar()+renderLive(false);
+ else if(state.screen==='catchup')app.innerHTML=topbar()+renderLive(true);
+ else if(state.screen==='movies')app.innerHTML=topbar()+renderPosters('movies');
+ else if(state.screen==='series')app.innerHTML=topbar()+renderPosters('series');
+ else if(state.screen==='profiles')app.innerHTML=topbar()+renderProfiles();
+ else if(state.screen==='settings')app.innerHTML=topbar()+renderSettings();
+ else if(state.screen==='search')app.innerHTML=topbar()+renderSearch();
+ else if(state.screen==='favorites')app.innerHTML=topbar()+renderFavorites();
+}
+function renderLogin(){
+ return `<div class="login-wrap">
+ <div class="login-card">${logo()}<h2>${t('login')}</h2>
+ <div class="field"><label>${t('username')}</label><input id="u"></div>
+ <div class="field"><label>${t('password')}</label><input id="p" type="password"></div>
+ <button class="primary" style="width:100%" onclick="newLogin()">${t('login')}</button></div>
+ <div class="profiles-card"><h2>${t('profiles')}</h2>${state.profiles.map(p=>`<div class="profile-row">
+ <div class="name"><b>${esc(p.name)}</b><br><small>${esc(p.username)}</small></div>
+ <button class="secondary" onclick='activateProfile(${JSON.stringify(JSON.stringify(p))})'>${t('open')}</button>
+ <button class="secondary" onclick='editProfile(${JSON.stringify(p.id)})'>✎</button>
+ <button class="danger" onclick='deleteProfile(${JSON.stringify(p.id)})'>×</button></div>`).join('')||'<p>Nema spremljenih profila.</p>'}</div></div>`;
+}
+function newLogin(){
+ const u=document.getElementById('u').value.trim(),p=document.getElementById('p').value;
+ if(!u||!p)return toast('Unesi username i password');
+ login({id:crypto.randomUUID(),name:u,username:u,password:p});
+}
+function activateProfile(raw){login(JSON.parse(raw))}
+function editProfile(id){
+ const p=state.profiles.find(x=>x.id===id);if(!p)return;
+ const name=prompt('Naziv profila',p.name)||p.name;
+ const username=prompt('Username',p.username)||p.username;
+ const password=prompt('Password',p.password)||p.password;
+ Object.assign(p,{name,username,password});save(LS_PROFILES,state.profiles);render();
+}
+function deleteProfile(id){state.profiles=state.profiles.filter(x=>x.id!==id);save(LS_PROFILES,state.profiles);render()}
+
+function renderHome(){
+ const exp=state.auth?.user_info?.exp_date?new Date(Number(state.auth.user_info.exp_date)*1000):null;
+ return `<div class="screen"><div class="home-grid">
+ <div class="tile" tabindex="0" onclick="openScreen('live')"><img src="home-live.png"><div class="overlay"></div><div class="content"><div class="bigicon">⚽</div><h2>${t('live')}</h2></div><div class="foot"><span>${t('open')}</span><span>↻</span></div></div>
+ <div class="home-right"><div class="home-top">
+ <div class="tile" tabindex="0" onclick="openScreen('movies')"><img src="home-movies.png"><div class="overlay"></div><div class="content"><div class="bigicon">🎬</div><h2>${t('movies')}</h2></div><div class="foot"><span>${t('open')}</span><span>↻</span></div></div>
+ <div class="tile" tabindex="0" onclick="openScreen('series')"><img src="home-series.png"><div class="overlay"></div><div class="content"><div class="bigicon">📺</div><h2>${t('series')}</h2></div><div class="foot"><span>${t('open')}</span><span>↻</span></div></div>
+ </div><div class="small-row">
+ ${small('⏪',t('catchup'),'catchup')}${small('★',t('favorites'),'favorites')}${small('⌕',t('search'),'search')}${small('👤',t('profiles'),'profiles')}${small('⚙',t('settings'),'settings')}
+ </div></div></div>
+ <div class="statusbar"><span>📅 ${exp?exp.toLocaleDateString():'—'}</span><span style="margin-left:auto">📍 ${esc(state.settings.city||'Ljubljana')} • ${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span><span>👤 ${esc(state.activeProfile?.name||'')}</span></div></div>`;
+}
+function small(icon,label,s){return `<button class="small-tile" onclick="openScreen('${s}')"><span>${icon}</span><span>${label}</span></button>`}
+
+function renderLive(catchup){
+ const cats=state.library.liveCats;
+ let items=state.library.live;
+ if(catchup)items=items.filter(x=>String(x.tv_archive)==='1');
+ const cat=state.activeCat||cats[0]?.category_id;
+ const filtered=cat?items.filter(x=>String(x.category_id)===String(cat)):items;
+ const selected=state.selected||filtered[0];
+ state.selected=selected;
+ return `<div class="screen browser">
+ <div class="categories">${cats.map(c=>`<div class="cat ${String(c.category_id)===String(cat)?'active':''}" onclick="selectCat('${c.category_id}')">${esc(c.category_name)}</div>`).join('')}</div>
+ <div class="items">${filtered.map(x=>`<div class="item-row ${selected?.stream_id===x.stream_id?'active':''}" onclick="playSmall('live',${x.stream_id},'${escJs(x.container_extension||'m3u8')}')" ondblclick="playFull('live',${x.stream_id},'${escJs(x.container_extension||'m3u8')}')">
+ <img src="${x.stream_icon||'orbit-logo.png'}"><div><b>${esc(x.name)}</b><br><small>${esc(x.epg_channel_id||'')}</small></div></div>`).join('')}</div>
+ <div class="details-panel preview"><video id="preview" controls autoplay playsinline crossorigin="anonymous"></video><div class="preview-info"><h2>${esc(selected?.name||'')}</h2><p>${catchup?t('catchup'):t('live')}</p></div></div></div>`;
+}
+function selectCat(id){state.activeCat=id;state.selected=null;render()}
+
+function destroyPlayers(){
+ try{ if(activeHls){activeHls.destroy();activeHls=null} }catch(e){}
+ try{
+  if(activeMpegTs){
+   activeMpegTs.pause();
+   activeMpegTs.unload();
+   activeMpegTs.detachMediaElement();
+   activeMpegTs.destroy();
+   activeMpegTs=null;
+  }
+ }catch(e){}
+}
+
+function normalizeExt(ext,url){
+ const e=(ext||'').toLowerCase().replace('.','');
+ if(e)return e;
+ const clean=(url||'').split('?')[0].toLowerCase();
+ if(clean.endsWith('.m3u8'))return 'm3u8';
+ if(clean.endsWith('.ts'))return 'ts';
+ if(clean.endsWith('.mp4'))return 'mp4';
+ if(clean.endsWith('.mkv'))return 'mkv';
+ return 'auto';
+}
+
+function attachStream(video,url,ext='auto'){
+ destroyPlayers();
+ const type=normalizeExt(ext,url);
+ video.removeAttribute('src');
+ video.load();
+
+ const fail=(msg)=>{
+  console.error(msg);
+  toast('Player greška. Probavam drugi način reprodukcije.');
+ };
+
+ // HLS playlist
+ if(type==='m3u8' || url.toLowerCase().includes('.m3u8')){
+  if(window.Hls && Hls.isSupported()){
+   activeHls=new Hls({
+    enableWorker:true,
+    lowLatencyMode:true,
+    liveSyncDurationCount:3,
+    maxBufferLength:30,
+    maxMaxBufferLength:60,
+    manifestLoadingTimeOut:15000,
+    levelLoadingTimeOut:15000,
+    fragLoadingTimeOut:20000
+   });
+   activeHls.loadSource(url);
+   activeHls.attachMedia(video);
+   activeHls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));
+   activeHls.on(Hls.Events.ERROR,(event,data)=>{
+    if(!data.fatal)return;
+    if(data.type===Hls.ErrorTypes.NETWORK_ERROR){
+     activeHls.startLoad();
+    }else if(data.type===Hls.ErrorTypes.MEDIA_ERROR){
+     activeHls.recoverMediaError();
+    }else{
+     fail(data);
+     activeHls.destroy();activeHls=null;
+     video.src=url;video.play().catch(()=>{});
+    }
+   });
+   return;
+  }
+ }
+
+ // Raw MPEG-TS live stream
+ if(type==='ts' || url.toLowerCase().includes('.ts')){
+  if(window.mpegts && mpegts.getFeatureList().mseLivePlayback){
+   try{
+    activeMpegTs=mpegts.createPlayer(
+     {type:'mpegts',isLive:true,url:url,hasAudio:true,hasVideo:true},
+     {enableWorker:true,enableStashBuffer:false,stashInitialSize:128,liveBufferLatencyChasing:true}
+    );
+    activeMpegTs.attachMediaElement(video);
+    activeMpegTs.load();
+    activeMpegTs.play().catch(()=>{});
+    activeMpegTs.on(mpegts.Events.ERROR,(type,detail,info)=>{
+     console.error('mpegts error',type,detail,info);
+    });
+    return;
+   }catch(e){fail(e)}
+  }
+ }
+
+ // Native HTML5 fallback for MP4 and browser-supported streams.
+ video.src=url;
+ video.play().catch(err=>{
+  console.error(err);
+  toast('Ovaj stream browser ne može direktno reproducirati.');
+ });
+}
+
+function playSmall(type,id,ext){
+ const v=document.getElementById('preview');
+ if(!v)return;
+ const url=streamUrl(type,id,ext);
+ attachStream(v,url,ext);
+}
+
+function playFull(type,id,ext){
+ showFullscreen(streamUrl(type,id,ext),ext);
+}
+
+function showFullscreen(url,ext='auto'){
+ const m=document.createElement('div');
+ m.className='modal';
+ m.innerHTML=`<img class="modal-logo" src="orbit-logo.png">
+ <div class="controls-top">
+  <button class="icon-btn" title="Nazad">←</button>
+  <select id="engineSelect" style="background:#091321;color:white;border:1px solid #29435e;border-radius:10px;padding:8px">
+   <option value="auto">AUTO PLAYER</option>
+   <option value="m3u8">HLS.JS</option>
+   <option value="ts">MPEGTS.JS</option>
+   <option value="mp4">HTML5</option>
+  </select>
+ </div>
+ <video controls autoplay playsinline></video>`;
+ const close=()=>{destroyPlayers();m.remove()};
+ m.querySelector('.modal-logo').onclick=close;
+ m.querySelector('.icon-btn').onclick=close;
+ const video=m.querySelector('video');
+ const selector=m.querySelector('#engineSelect');
+ selector.onchange=()=>attachStream(video,url,selector.value);
+ document.body.appendChild(m);
+ attachStream(video,url,ext);
+}
+
+
+
+function renderPosters(kind){
+ const isMovies=kind==='movies';
+ const cats=isMovies?state.library.movieCats:state.library.seriesCats;
+ const items=isMovies?state.library.movies:state.library.series;
+ const cat=state.activeCat||cats[0]?.category_id||null;
+ const filtered=cat
+   ? items.filter(x=>String(x.category_id)===String(cat))
+   : items;
+
+ return `<div class="screen" style="display:grid;grid-template-columns:240px 1fr;gap:14px">
+   <div class="white-menu">
+     ${cats.map(c=>`
+       <div class="cat ${String(c.category_id)===String(cat)?'active':''}"
+            onclick="selectPosterCat('${escJs(c.category_id)}','${kind}')">
+         ${esc(c.category_name)}
+       </div>`).join('')}
+   </div>
+
+   <div>
+     <div class="poster-grid">
+       ${filtered.map(x=>{
+         const id=isMovies?x.stream_id:x.series_id;
+         const img=x.stream_icon||x.cover||'orbit-logo.png';
+         const meta=x.rating||x.releaseDate||x.year||'';
+         const ext=x.container_extension||'mp4';
+
+         if(isMovies){
+           return `<div class="poster"
+                    onclick="openMovieDetails(${Number(id)},'${escJs(ext)}')"
+                    ondblclick="event.stopPropagation();playFull('movie',${Number(id)},'${escJs(ext)}')">
+             <img src="${esc(img)}" onerror="this.src='orbit-logo.png'">
+             <h4>${esc(x.name)}</h4>
+             <p>${esc(meta)}</p>
+           </div>`;
+         }
+
+         return `<div class="poster" onclick="openSeries(${Number(id)})">
+           <img src="${esc(img)}" onerror="this.src='orbit-logo.png'">
+           <h4>${esc(x.name)}</h4>
+           <p>${esc(meta)}</p>
+         </div>`;
+       }).join('')}
+     </div>
+   </div>
+ </div>
+ <div id="floatingPreview"></div>`;
+}
+
+function selectPosterCat(id,kind){
+ state.activeCat=id;
+ state.selected=null;
+ state.screen=kind;
+ render();
+}
+
+function findMovie(id){
+ return state.library.movies.find(x=>Number(x.stream_id)===Number(id));
+}
+
+function openMovieDetails(id,ext='mp4'){
+ const movie=findMovie(id);
+ if(!movie)return toast('Film nije pronađen.');
+
+ const image=movie.stream_icon||movie.cover||'orbit-logo.png';
+ const backdrop=movie.backdrop_path||movie.backdrop||image;
+ const description=movie.plot||movie.description||movie.info?.plot||'';
+ const rating=movie.rating||movie.rating_5based||'';
+ const year=movie.year||movie.releaseDate||movie.releasedate||'';
+ const duration=movie.duration||movie.duration_secs||'';
+
+ const host=document.getElementById('floatingPreview');
+ if(!host)return;
+
+ host.innerHTML=`<div class="modal movie-detail-modal">
+   <div style="
+      width:min(1100px,94vw);
+      max-height:92vh;
+      overflow:auto;
+      border-radius:24px;
+      background:#091321;
+      box-shadow:0 24px 90px rgba(0,0,0,.65);
+      position:relative">
+     <img src="${esc(backdrop)}"
+          onerror="this.style.display='none'"
+          style="width:100%;height:310px;object-fit:cover;opacity:.42;border-radius:24px 24px 0 0">
+     <img src="orbit-logo.png"
+          class="modal-logo"
+          style="position:absolute;top:14px;right:18px"
+          onclick="closeFloatingPreview()">
+     <button class="icon-btn"
+             style="position:absolute;top:16px;left:18px;background:rgba(0,0,0,.55)"
+             onclick="closeFloatingPreview()">←</button>
+
+     <div style="display:grid;grid-template-columns:220px 1fr;gap:24px;padding:24px;margin-top:-120px;position:relative">
+       <img src="${esc(image)}"
+            onerror="this.src='orbit-logo.png'"
+            style="width:220px;aspect-ratio:2/3;object-fit:cover;border-radius:18px;border:3px solid rgba(255,255,255,.25)">
+       <div style="padding-top:118px">
+         <h1 style="margin:0 0 8px">${esc(movie.name)}</h1>
+         <p style="color:var(--blue);font-weight:800">
+           ${esc(year)} ${rating?` • ⭐ ${esc(rating)}`:''} ${duration?` • ${esc(duration)}`:''}
+         </p>
+         <p style="color:var(--soft);line-height:1.55">${esc(description)}</p>
+         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px">
+           <button class="primary" onclick="playMoviePreview(${Number(id)},'${escJs(ext)}')">▶ Mali player</button>
+           <button class="secondary" onclick="playFull('movie',${Number(id)},'${escJs(ext)}')">⛶ Fullscreen</button>
+           <button class="secondary" onclick="toggleFavorite('movie',${Number(id)},'${escJs(movie.name)}','${escJs(image)}')">★ Favorit</button>
+         </div>
+       </div>
+     </div>
+
+     <div style="padding:0 24px 24px">
+       <video id="moviePreviewPlayer" controls playsinline style="display:none;min-height:360px"></video>
+     </div>
+   </div>
+ </div>`;
+}
+
+function playMoviePreview(id,ext='mp4'){
+ const video=document.getElementById('moviePreviewPlayer');
+ if(!video)return;
+ video.style.display='block';
+ attachStream(video,streamUrl('movie',id,ext),ext);
+ video.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function closeFloatingPreview(){
+ destroyPlayers();
+ const host=document.getElementById('floatingPreview');
+ if(host)host.innerHTML='';
+}
+
+async function openSeries(id){
+ const series=state.library.series.find(x=>Number(x.series_id)===Number(id));
+ const host=document.getElementById('floatingPreview');
+ if(!host)return;
+
+ host.innerHTML=`<div class="modal">
+   <div style="background:#091321;padding:28px;border-radius:22px;width:min(1000px,94vw);text-align:center">
+     <img src="orbit-logo.png" class="logo" style="height:90px">
+     <h2>Učitavanje serije...</h2>
+   </div>
+ </div>`;
+
+ try{
+   const data=await api('get_series_info',{series_id:id});
+   const info=data?.info||{};
+   const episodes=data?.episodes||{};
+   const cover=info.cover||series?.cover||series?.stream_icon||'orbit-logo.png';
+   const backdrop=Array.isArray(info.backdrop_path)
+      ? info.backdrop_path[0]
+      : (info.backdrop_path||cover);
+   const description=info.plot||info.description||series?.plot||'';
+
+   const seasons=Object.entries(episodes);
+   if(!seasons.length){
+     throw new Error('Provider nije vratio epizode za ovu seriju.');
+   }
+
+   host.innerHTML=`<div class="modal series-modal">
+     <div style="
+       width:min(1180px,96vw);
+       max-height:94vh;
+       overflow:auto;
+       background:#091321;
+       border-radius:24px;
+       position:relative;
+       box-shadow:0 24px 90px rgba(0,0,0,.7)">
+       <img src="${esc(backdrop)}"
+            onerror="this.style.display='none'"
+            style="width:100%;height:300px;object-fit:cover;opacity:.38;border-radius:24px 24px 0 0">
+       <img src="orbit-logo.png"
+            class="modal-logo"
+            onclick="closeFloatingPreview()">
+       <button class="icon-btn"
+               style="position:absolute;top:16px;left:18px;background:rgba(0,0,0,.6)"
+               onclick="closeFloatingPreview()">←</button>
+
+       <div style="display:grid;grid-template-columns:210px 1fr;gap:24px;padding:24px;margin-top:-100px;position:relative">
+         <img src="${esc(cover)}"
+              onerror="this.src='orbit-logo.png'"
+              style="width:210px;aspect-ratio:2/3;object-fit:cover;border-radius:18px">
+         <div style="padding-top:95px">
+           <h1>${esc(info.name||series?.name||'Series')}</h1>
+           <p style="color:var(--soft);line-height:1.5">${esc(description)}</p>
+         </div>
+       </div>
+
+       <div style="padding:0 24px 28px">
+         ${seasons.map(([season,list],seasonIndex)=>`
+           <section style="margin:18px 0">
+             <h2 style="color:var(--blue)">Season ${esc(season)}</h2>
+             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px">
+               ${(list||[]).map((e,index)=>{
+                 const episodeId=e.id;
+                 const ext=e.container_extension||'mp4';
+                 const title=e.title||`Episode ${e.episode_num||index+1}`;
+                 const image=e.info?.movie_image||e.info?.cover_big||cover;
+                 return `<button class="secondary"
+                                 style="padding:0;text-align:left;overflow:hidden"
+                                 onclick="openEpisodePreview(${Number(episodeId)},'${escJs(ext)}','${escJs(title)}')">
+                   <img src="${esc(image)}"
+                        onerror="this.src='${esc(cover)}'"
+                        style="width:100%;height:118px;object-fit:cover">
+                   <div style="padding:11px">
+                     <b>${esc(title)}</b><br>
+                     <small style="color:var(--soft)">Episode ${esc(e.episode_num||index+1)}</small>
+                   </div>
+                 </button>`;
+               }).join('')}
+             </div>
+           </section>`).join('')}
+
+         <div id="episodePlayerWrap" style="margin-top:20px"></div>
+       </div>
+     </div>
+   </div>`;
+ }catch(e){
+   host.innerHTML='';
+   toast('Serija se ne može otvoriti: '+e.message);
+ }
+}
+
+function openEpisodePreview(id,ext='mp4',title='Episode'){
+ const wrap=document.getElementById('episodePlayerWrap');
+ if(!wrap)return;
+ wrap.innerHTML=`<div style="background:#02050b;padding:14px;border-radius:18px">
+   <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+     <h3 style="margin:0;flex:1">${esc(title)}</h3>
+     <button class="secondary" onclick="showFullscreen('${streamUrl('series',id,ext)}','${escJs(ext)}')">⛶ Fullscreen</button>
+   </div>
+   <video id="episodePreviewPlayer" controls playsinline style="min-height:380px"></video>
+ </div>`;
+ const video=document.getElementById('episodePreviewPlayer');
+ attachStream(video,streamUrl('series',id,ext),ext);
+ wrap.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+function toggleFavorite(type,id,name,image){
+ const key=`${type}:${id}`;
+ const pos=state.favorites.findIndex(x=>x.key===key);
+ if(pos>=0){
+   state.favorites.splice(pos,1);
+   toast('Uklonjeno iz favorita.');
+ }else{
+   state.favorites.push({key,type,id,name,image});
+   toast('Dodano u favorite.');
+ }
+ save('orbit_favorites',state.favorites);
+}
+
+function renderProfiles(){return `<div class="screen"><h1>${t('profiles')}</h1>${renderLogin().match(/<div class="profiles-card">[\s\S]*<\/div><\/div>$/)?.[0]||''}</div>`}
+function renderSettings(){
+ const langs=[['bs','Bosanski'],['sr','Srpski'],['hr','Hrvatski'],['mk','Македонски'],['sq','Shqip'],['sl','Slovenščina'],['en','English'],['de','Deutsch'],['it','Italiano']];
+ return `<div class="screen"><h1>${t('settings')}</h1><div class="settings-grid">
+ <div class="setting"><label>${t('language')}</label><select onchange="setLang(this.value)">${langs.map(([v,n])=>`<option value="${v}" ${state.settings.lang===v?'selected':''}>${n}</option>`).join('')}</select></div>
+ <div class="setting"><label>Audio language</label><input value="${esc(state.settings.audio||'')}" onchange="setSetting('audio',this.value)"></div>
+ <div class="setting"><label>Subtitle language</label><input value="${esc(state.settings.subtitle||'')}" onchange="setSetting('subtitle',this.value)"></div>
+ <div class="setting"><label>City</label><input value="${esc(state.settings.city||'')}" onchange="setSetting('city',this.value)"></div>
+ <div class="setting"><b>Web Player Engines</b><p style="color:var(--soft)">AUTO koristi HLS.js za m3u8, MPEGTS.js za ts i HTML5 za mp4.</p></div>
+ <div class="setting"><button class="danger" onclick="logout()">${t('logout')}</button></div></div></div>`;
+}
+function setLang(v){state.settings.lang=v;save(LS_SETTINGS,state.settings);render()}
+function setSetting(k,v){state.settings[k]=v;save(LS_SETTINGS,state.settings)}
+function logout(){state.activeProfile=null;state.auth=null;state.screen='login';render()}
+function renderSearch(){
+ const all=[...state.library.live.map(x=>({...x,_type:'live'})),...state.library.movies.map(x=>({...x,_type:'movie'})),...state.library.series.map(x=>({...x,_type:'series'}))];
+ return `<div class="screen"><h1>${t('search')}</h1><input id="q" style="width:100%;padding:14px;border-radius:12px" oninput="doSearch(this.value)" placeholder="${t('search')}"><div id="results" class="poster-grid" style="margin-top:16px">${searchHtml(all.slice(0,20))}</div></div>`;
+}
+function doSearch(q){
+ const all=[...state.library.live.map(x=>({...x,_type:'live'})),...state.library.movies.map(x=>({...x,_type:'movie'})),...state.library.series.map(x=>({...x,_type:'series'}))];
+ document.getElementById('results').innerHTML=searchHtml(all.filter(x=>(x.name||'').toLowerCase().includes(q.toLowerCase())).slice(0,50));
+}
+function searchHtml(items){return items.map(x=>`<div class="poster"><img src="${x.stream_icon||x.cover||'orbit-logo.png'}"><h4>${esc(x.name)}</h4><p>${x._type}</p></div>`).join('')}
+function renderFavorites(){
+ return `<div class="screen"><h1>${t('favorites')}</h1>
+   <div class="poster-grid">
+     ${state.favorites.map(f=>`<div class="poster"
+       onclick="${f.type==='movie'
+          ? `openMovieDetails(${Number(f.id)},'mp4')`
+          : f.type==='series'
+            ? `openSeries(${Number(f.id)})`
+            : ''}">
+       <img src="${esc(f.image||'orbit-logo.png')}" onerror="this.src='orbit-logo.png'">
+       <h4>${esc(f.name||'Favorite')}</h4>
+       <p>${esc(f.type||'')}</p>
+     </div>`).join('')||'<p>Nema favorita.</p>'}
+   </div></div>`;
+}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function escJs(s=''){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+render();
+</script>
+</body>
+</html>
