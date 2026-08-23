@@ -1,0 +1,69 @@
+name: Build ORBIT macOS Player
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "player-build/orbit_xtream_player/**"
+      - ".github/workflows/build-macos-player.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: orbit-macos-player
+  cancel-in-progress: true
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Build macOS application
+        working-directory: player-build/orbit_xtream_player
+        run: |
+          flutter config --enable-macos-desktop
+          flutter pub get
+          flutter build macos --release
+
+      - name: Create unsigned DMG
+        run: |
+          APP_PATH="$(find player-build/orbit_xtream_player/build/macos/Build/Products/Release -maxdepth 1 -name '*.app' -print -quit)"
+          if [ -z "$APP_PATH" ]; then
+            echo "macOS application was not produced"
+            exit 1
+          fi
+
+          codesign --force --deep --sign - "$APP_PATH"
+          rm -rf dmg-staging
+          mkdir dmg-staging
+          cp -R "$APP_PATH" dmg-staging/
+          ln -s /Applications dmg-staging/Applications
+          mkdir -p downloads
+          hdiutil create \
+            -volname "ORBIT Xtream Player" \
+            -srcfolder dmg-staging \
+            -ov \
+            -format UDZO \
+            downloads/orbit-xtream-player-macos.dmg
+          shasum -a 256 downloads/orbit-xtream-player-macos.dmg
+
+      - name: Publish DMG on the website
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/orbit-xtream-player-macos.dmg
+          if git diff --cached --quiet; then
+            echo "DMG is unchanged"
+          else
+            git commit -m "Add ORBIT Xtream Player for macOS"
+            git push
+          fi
