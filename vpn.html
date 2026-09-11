@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="bs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#050816" />
+  <title>Orbit TV Plus | IPTV VPN vodič</title>
+  <meta name="description" content="Orbit TV Plus VPN vodič za Android, iPhone/iPad, Android TV/TV Box, Fire TV/Firestick i Windows." />
+  <style>
+    :root{--bg:#050816;--card:#0b1025;--card2:#101735;--text:#edf7ff;--muted:#a7b5d6;--cyan:#69e7ff;--blue:#4a74ff;--violet:#9b5cff;--line:rgba(255,255,255,.10);--shadow:0 25px 70px rgba(0,0,0,.42)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,rgba(70,210,255,.15),transparent 28%),radial-gradient(circle at 85% 15%,rgba(116,77,255,.18),transparent 30%),var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.nav{position:sticky;top:0;z-index:20;background:rgba(5,8,22,.75);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.navin{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;letter-spacing:.2px}.brand img{width:54px;height:54px;object-fit:contain}.navlinks{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:14px;padding:11px 16px;text-decoration:none;font-weight:750;background:rgba(255,255,255,.045);transition:.2s ease}.btn:hover{transform:translateY(-1px);border-color:rgba(105,231,255,.55);background:rgba(105,231,255,.09)}.btn.primary{background:linear-gradient(135deg,var(--cyan),#60a5fa 55%,var(--violet));color:#04101c;border:0;box-shadow:0 12px 35px rgba(91,150,255,.24)}
+    .hero{padding:84px 0 46px}.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:center}.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid rgba(105,231,255,.24);background:rgba(105,231,255,.07);border-radius:999px;color:#bff7ff;font-weight:700;font-size:.9rem}.hero h1{font-size:clamp(2.4rem,6vw,5.2rem);line-height:.96;letter-spacing:-.055em;margin:18px 0 22px}.grad{background:linear-gradient(100deg,#fff 10%,#8deeff 47%,#a28bff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:720px;color:var(--muted);font-size:1.1rem}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.hero-logo{display:grid;place-items:center;min-height:320px;border-radius:32px;background:linear-gradient(145deg,rgba(87,233,255,.10),rgba(140,89,255,.10));border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;position:relative}.hero-logo:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(74,116,255,.24);filter:blur(55px)}.hero-logo img{width:min(78%,330px);position:relative;filter:drop-shadow(0 28px 42px rgba(57,181,255,.24))}
+    section{padding:36px 0}.section-head{margin-bottom:22px}.section-head h2{font-size:clamp(1.7rem,4vw,2.6rem);margin:0 0 8px;letter-spacing:-.03em}.section-head p{color:var(--muted);margin:0}.device-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.device{padding:18px 14px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));text-decoration:none;text-align:center;font-weight:800;min-height:92px;display:grid;place-items:center}.device:hover{border-color:rgba(105,231,255,.55);transform:translateY(-2px)}
+    .guide-list{display:grid;gap:18px}.guide{border:1px solid var(--line);border-radius:24px;background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,.022));overflow:hidden;box-shadow:0 16px 45px rgba(0,0,0,.18)}.guide summary{cursor:pointer;list-style:none;padding:22px 24px;font-size:1.08rem;font-weight:850;display:flex;align-items:center;justify-content:space-between;gap:16px}.guide summary::-webkit-details-marker{display:none}.guide summary:after{content:"+";width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.06);font-size:1.3rem}.guide[open] summary:after{content:"−"}.guide-body{padding:0 24px 24px;border-top:1px solid var(--line)}.guide-body p{color:var(--muted)}.steps{margin:0;padding-left:22px}.steps li{padding:6px 0}.steps a{color:#9cefff}.note{margin-top:16px;padding:14px 16px;border-radius:14px;border:1px solid rgba(105,231,255,.17);background:rgba(105,231,255,.06);color:#cfefff}
+    .contact{padding:58px 0 78px}.contact-card{border-radius:28px;padding:34px;background:linear-gradient(135deg,rgba(77,202,255,.15),rgba(116,85,255,.16));border:1px solid rgba(255,255,255,.13);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}.contact-card h2{margin:0 0 8px;font-size:clamp(1.7rem,4vw,2.7rem)}.contact-card p{margin:0;color:var(--muted)}.contact-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.footer{border-top:1px solid var(--line);padding:22px 0 38px;color:#7f8caf;font-size:.92rem}.footer-in{display:flex;align-items:center;justify-content:space-between;gap:18px}.footbrand{display:flex;align-items:center;gap:10px}.footbrand img{width:34px;height:34px;object-fit:contain}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-logo{min-height:230px}.device-grid{grid-template-columns:repeat(2,1fr)}.contact-card{grid-template-columns:1fr}.contact-actions{justify-content:flex-start}}
+    @media(max-width:620px){.navlinks .btn:first-child{display:none}.hero{padding-top:54px}.device-grid{grid-template-columns:1fr}.contact-card{padding:24px}.guide summary,.guide-body{padding-left:18px;padding-right:18px}.footer-in{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="#top"><img src="assets/orbit-logo.png" alt="Orbit TV Plus logo"><span>Orbit TV Plus</span></a>
+      <div class="navlinks">
+        <a class="btn" href="index.html">← Orbit IPTV</a>
+        <a class="btn" href="#vodic">VPN vodič</a>
+        <a class="btn primary" href="https://wa.me/38669843976" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Orbit TV Plus • IPTV podrška</span>
+          <h1><span class="grad">IPTV VPN vodič</span></h1>
+          <p>Ako imate problem s povezivanjem ili vaš internet provajder blokira pristup servisima, VPN često može riješiti problem. Odaberite svoj uređaj i pratite jednostavne korake ispod.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#vodic">Odaberi uređaj</a>
+            <a class="btn" href="https://t.me/dzekcano72" target="_blank" rel="noopener">Telegram @dzekcano72</a>
+          </div>
+        </div>
+        <div class="hero-logo"><img src="assets/orbit-logo.png" alt="Orbit TV Plus"></div>
+      </div>
+    </header>
+
+    <section id="vodic">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Odaberite svoj uređaj</h2>
+          <p>Preporučeni VPN u ovom vodiču je Proton VPN. Instalacija se malo razlikuje zavisno od uređaja.</p>
+        </div>
+        <div class="device-grid">
+          <a class="device" href="#android">📱 Android telefon / tablet</a>
+          <a class="device" href="#ios">🍎 iPhone / iPad</a>
+          <a class="device" href="#android-tv">📺 Android TV / TV Box</a>
+          <a class="device" href="#firetv">🔥 Fire TV / Firestick</a>
+          <a class="device" href="#windows">💻 Windows računar</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap guide-list">
+        <details class="guide" id="android" open>
+          <summary>📱 Android telefon / tablet</summary>
+          <div class="guide-body">
+            <p>Instalirajte Proton VPN, prijavite se i povežite na jedan od dostupnih servera prije ponovnog pokretanja IPTV aplikacije.</p>
+            <ol class="steps">
+              <li>Instalirajte <a href="https://play.google.com/store/apps/details?id=ch.protonvpn.android" target="_blank" rel="noopener">Proton VPN sa Google Play Store-a</a>.</li>
+              <li>Otvorite aplikaciju i prijavite se ili kreirajte Proton račun.</li>
+              <li>Dodirnite <strong>Quick Connect</strong> ili izaberite server.</li>
+              <li>Pri prvom povezivanju odobrite VPN zahtjev pritiskom na <strong>OK</strong>.</li>
+              <li>Kada je VPN povezan, ponovo otvorite svoju IPTV aplikaciju.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="guide" id="ios">
+          <summary>🍎 iPhone / iPad</summary>
+          <div class="guide-body">
+            <ol class="steps">
+              <li>Instalirajte <a href="https://apps.apple.com/app/proton-vpn-fast-secure/id1437005085" target="_blank" rel="noopener">Proton VPN iz App Store-a</a>.</li>
+              <li>Otvorite aplikaciju i prijavite se ili kreirajte novi račun.</li>
+              <li>Odaberite <strong>Quick Connect</strong>.</li>
+              <li>Kada iOS zatraži dozvolu za VPN konfiguraciju, dodirnite <strong>Allow</strong>.</li>
+              <li>Nakon povezivanja ponovo pokrenite IPTV aplikaciju.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="guide" id="android-tv">
+          <summary>📺 Android TV / TV Box</summary>
+          <div class="guide-body">
+            <ol class="steps">
+              <li>Otvorite Google Play Store na TV uređaju.</li>
+              <li>Potražite <strong>Proton VPN</strong> i instalirajte aplikaciju.</li>
+              <li>Otvorite aplikaciju; na ekranu se može pojaviti kod za prijavu.</li>
+              <li>Na telefonu ili računaru otvorite <a href="https://protonvpn.com/tv" target="_blank" rel="noopener">protonvpn.com/tv</a>, prijavite se i unesite kod sa TV-a.</li>
+              <li>Na TV-u odaberite server ili <strong>Quick Connect</strong>.</li>
+              <li>Kada se VPN poveže, ponovo otvorite IPTV aplikaciju.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="guide" id="firetv">
+          <summary>🔥 Fire TV / Firestick</summary>
+          <div class="guide-body">
+            <ol class="steps">
+              <li>Otvorite Appstore na Fire TV / Firestick uređaju.</li>
+              <li>Pronađite i instalirajte <strong>Proton VPN</strong>.</li>
+              <li>Otvorite aplikaciju i slijedite upute za prijavu.</li>
+              <li>Ako se pojavi kod, otvorite <a href="https://protonvpn.com/tv" target="_blank" rel="noopener">protonvpn.com/tv</a> na drugom uređaju i unesite ga.</li>
+              <li>Povežite se na VPN server i ponovo pokrenite IPTV aplikaciju.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="guide" id="windows">
+          <summary>💻 Windows računar</summary>
+          <div class="guide-body">
+            <ol class="steps">
+              <li>Preuzmite Proton VPN sa <a href="https://protonvpn.com/download-windows" target="_blank" rel="noopener">službene Windows stranice</a>.</li>
+              <li>Pokrenite instalaciju i završite podešavanje programa.</li>
+              <li>Otvorite Proton VPN i prijavite se.</li>
+              <li>Kliknite <strong>Quick Connect</strong> ili ručno odaberite server.</li>
+              <li>Nakon povezivanja ponovo otvorite IPTV aplikaciju.</li>
+            </ol>
+            <div class="note">Ako i dalje imate problem s povezivanjem, javite nam se putem Telegrama ili WhatsAppa.</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+      <div class="wrap">
+        <div class="contact-card">
+          <div>
+            <h2>📲 Kontaktirajte nas danas!</h2>
+            <p>Za pomoć oko podešavanja ili povezivanja, javite nam se direktno.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn" href="https://t.me/dzekcano72" target="_blank" rel="noopener">💬 Telegram: @dzekcano72</a>
+            <a class="btn primary" href="https://wa.me/38669843976" target="_blank" rel="noopener">📱 WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-in">
+      <div class="footbrand"><img src="assets/orbit-logo.png" alt=""><strong>Orbit TV Plus</strong></div>
+      <div>© 2026 Orbit TV Plus. Sva prava zadržana.</div>
+    </div>
+  </footer>
+</body>
+</html>
