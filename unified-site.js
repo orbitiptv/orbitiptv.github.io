@@ -12,5 +12,7 @@ function channelPage(){if(!location.pathname.includes('channel-list'))return;doc
 function bind(){document.querySelectorAll('[data-wa="reseller"]').forEach(a=>a.href='https://wa.me/38669843976?text='+encodeURIComponent('Hello, I want to become an OrbitTV reseller. Please send me reseller panel information.'))}
 function init(){navigation();channelPage();if(document.body.dataset.page==='home')home();if(location.pathname.endsWith('/reseller.html')||new URLSearchParams(location.search).get('view')==='reseller')reseller();bind()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+let refreshQueued=false;
+new MutationObserver(()=>{if(refreshQueued)return;refreshQueued=true;requestAnimationFrame(()=>{refreshQueued=false;navigation();bind()})}).observe(document.documentElement,{childList:true,subtree:true});
 })();
 
