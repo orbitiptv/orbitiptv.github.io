@@ -67,7 +67,7 @@ Other|Ostalo|Drugo|Andere|Altro|Të tjera|Друго`;
   for(const root of document.querySelectorAll('#browser,#contentTabs,#catalogStatus'))observer?.observe(root,{subtree:true,childList:true,characterData:true});
  }
  function selectors(){
-  let selects=[...document.querySelectorAll('#site-language,#language,#guideLanguage')];
+  let selects=[...document.querySelectorAll('#site-language,#language,#guideLanguage,#premiumLanguage,#lang')];
   if(!selects.length){const select=document.createElement('select');select.id='site-language';const host=document.querySelector('.site-header,.navlinks,.navin,header,nav');(host||document.body).append(select);selects=[select];}
   for(const select of selects){select.classList.add('orbit-site-language','notranslate');select.setAttribute('translate','no');select.setAttribute('aria-label','Language');select.replaceChildren();for(const [code,name]of Object.entries(names)){const o=document.createElement('option');o.value=code;o.textContent=name;select.append(o);}select.value=language;}
  }
