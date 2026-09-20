@@ -1,17 +1,18 @@
 'use strict';
-const copyButton = document.getElementById('copy-code');
-copyButton.addEventListener('click', async () => {
-  const code = document.getElementById('downloader-code').textContent.trim();
-  const status = document.getElementById('copy-status');
-  try {
-    await navigator.clipboard.writeText(code);
-    status.textContent = 'Code copied: ' + code;
-  } catch {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    range.selectNodeContents(document.getElementById('downloader-code'));
-    selection.removeAllRanges();
-    selection.addRange(range);
-    status.textContent = 'Select and copy this code: ' + code;
-  }
+document.addEventListener('click', async event => {
+ const button=event.target.closest('#copy-code,.copy-player-code');
+ if(!button)return;
+ const original=button.id==='copy-code';
+ const scope=original?button.closest('.download-card'):button.closest('.catalog-code');
+ const codeElement=original?document.getElementById('downloader-code'):scope.querySelector('strong');
+ const code=codeElement.textContent.trim();
+ const status=original?document.getElementById('copy-status'):scope.querySelector('.catalog-copy-status');
+ try {
+  await navigator.clipboard.writeText(code);
+  status.textContent='Copied: '+code;
+ } catch {
+  const selection=window.getSelection(), range=document.createRange();
+  range.selectNodeContents(codeElement);selection.removeAllRanges();selection.addRange(range);
+  status.textContent='Select and copy: '+code;
+ }
 });
