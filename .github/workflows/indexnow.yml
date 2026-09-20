@@ -1,0 +1,34 @@
+name: Notify search engines via IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit key Orbit IPTV URLs
+        shell: bash
+        run: |
+          curl --fail-with-body --retry 3 --retry-delay 5             -H "Content-Type: application/json; charset=utf-8"             -X POST "https://api.indexnow.org/indexnow"             --data '{
+              "host": "orbitiptv.github.io",
+              "key": "9f2c7b41d6e84a0bb5e37d4c61a8f903",
+              "keyLocation": "https://orbitiptv.github.io/9f2c7b41d6e84a0bb5e37d4c61a8f903.txt",
+              "urlList": [
+                "https://orbitiptv.github.io/",
+                "https://orbitiptv.github.io/reseller.html",
+                "https://orbitiptv.github.io/vpn.html",
+                "https://orbitiptv.github.io/channel-list/",
+                "https://orbitiptv.github.io/Installation-Guide/",
+                "https://orbitiptv.github.io/Installation-Guide/activation/",
+                "https://orbitiptv.github.io/Installation-Guide/iptv-smarters-pro/",
+                "https://orbitiptv.github.io/Installation-Guide/platforms/",
+                "https://orbitiptv.github.io/Installation-Guide/smart-tvs/",
+                "https://orbitiptv.github.io/Payment-Center/"
+              ]
+            }'
