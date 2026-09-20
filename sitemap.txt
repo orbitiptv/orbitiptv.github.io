@@ -8,3 +8,4 @@ https://orbitiptv.github.io/Installation-Guide/iptv-smarters-pro/
 https://orbitiptv.github.io/Installation-Guide/platforms/
 https://orbitiptv.github.io/Installation-Guide/smart-tvs/
 https://orbitiptv.github.io/Payment-Center/
+https://orbitiptv.github.io/orbit-player-downloads/
