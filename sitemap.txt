@@ -9,3 +9,4 @@ https://orbitiptv.github.io/Installation-Guide/platforms/
 https://orbitiptv.github.io/Installation-Guide/smart-tvs/
 https://orbitiptv.github.io/Payment-Center/
 https://orbitiptv.github.io/orbit-player-downloads/
+https://orbitiptv.github.io/sports.html

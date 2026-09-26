@@ -1,0 +1,68 @@
+:root{--ink:#f5f3ff!important;--muted:#b9b5cc!important;--panel:#111127!important;--line:#ffffff20!important;--purple:#b59bff!important;--cyan:#b59bff!important}
+html{scroll-padding-top:110px}
+body.orbit-interior{background:#05051b!important;color:#f5f3ff!important}
+.orbit-interior :is(header,.site-header,.nav,.topbar){background:#09091ff5!important;border-color:#ffffff20!important;color:#f5f3ff}
+.orbit-interior :is(.brand,nav a,.guide-nav a,.navlinks a,.desktop-nav a){color:#e5dff7!important}
+.orbit-interior :is(.hero,.page-hero,.guide-hero,.accent-section,.setup,.login-section,.support,.stats,.questions,.contact-card){background:radial-gradient(ellipse at 75% 20%,#4b2b8033,transparent 70%),#09091f!important;color:#f5f3ff!important}
+.orbit-interior :is(.tables article,.browser>article,.stat-grid>div,.catalog-card,.download-card,.hero-logo,.logo-card,.device,.guide,.instruction-card,.instruction-side,.login-panel,.guide-overview,.benefits article,.guides article,.help-grid article,.support-links a,.contact-grid>a,.contact-cards>a,.setup li,.xtream-download-card,.faq details,.faq-grid details){background:#111127!important;color:#f5f3ff!important;border-color:#ffffff20!important;box-shadow:0 16px 40px #0002}
+.orbit-interior :is(h1,h2,h3,h4,strong,summary){color:#f5f3ff}
+.orbit-interior :is(.hero p,.lead,.description,.section-heading p,.guide-body p,.catalog-note,.catalog-code,.contact-grid small,.guide-hero p){color:#c1bbd3!important}
+.orbit-interior :is(.eyebrow,.text-link,.catalog-guide,.catalog-code strong,.variant-list a,.inline-link){color:#bda5ff!important}
+.orbit-interior :is(.primary,.button-primary,.btn.primary){background:linear-gradient(110deg,#7650eb,#487bf5)!important;color:#fff!important;border-color:transparent!important;border-radius:24px}
+.orbit-interior :is(.secondary,.button-secondary,.outline,.btn,.lang){background:#19132b!important;color:#eee6ff!important;border-color:#ffffff30!important}
+.orbit-interior :is(th){background:#241739!important;color:#ddceff!important}.orbit-interior :is(th,td){border-color:#ffffff20!important}
+.orbit-interior :is(footer,.footer){background:#050514!important;color:#b9b5cc!important;border-color:#ffffff20!important}
+.orbit-interior :is(select,input[type=search]){background:#17132b!important;color:#fff!important;border-color:#716080!important}
+.orbit-interior :is(button,a,select,input,summary):focus-visible{outline:3px solid #c1a2ff!important;outline-offset:4px}
+.orbit-interior img{max-width:100%}
+.orbit-interior :is(.table-wrap,.orbit-table){overflow-x:auto}
+.orbit-interior .plan-grid article{background:#111127}.orbit-interior .plan-grid article>small{color:#bca6ff}
+.orbit-route-nav{display:flex;gap:8px;flex-wrap:wrap;padding:15px max(20px,calc((100% - 1180px)/2));border-bottom:1px solid #ffffff14;background:#0c0a22}
+.orbit-route-nav a{padding:8px 13px;border:1px solid #ffffff20;border-radius:24px;text-decoration:none;font-size:12px;color:#d9cfed!important;white-space:nowrap}
+.orbit-route-nav a[aria-current=page]{background:#7550d933;border-color:#9771fa;color:white!important}
+.orbit-skip{position:fixed;left:20px;top:-100px;z-index:10000;background:#fff;color:#211338;padding:12px 20px;border-radius:8px}.orbit-skip:focus{top:12px}
+.orbit-top{position:fixed;bottom:85px;right:22px;border-radius:50%;width:44px;height:44px;background:#292044;color:white;border:1px solid #b79ae8;z-index:30}
+.orbit-interior #orbit-chat-toggle{background:linear-gradient(110deg,#7650eb,#487bf5);color:white}
+.orbit-interior .grad{background:none!important;color:#fff!important;-webkit-text-fill-color:#fff}
+.orbit-interior .browser .channel-row{overflow-wrap:anywhere}
+@media(max-width:900px){
+.orbit-interior header{gap:12px;flex-wrap:wrap}
+.orbit-interior header nav.open{background:#15112c!important;border-color:#ffffff30!important}
+.orbit-interior .navin{flex-wrap:wrap}
+.orbit-interior .navlinks{justify-content:flex-start;flex-wrap:wrap}
+.orbit-interior .guide-nav{flex-wrap:wrap}
+.orbit-interior .guide-nav a{display:inline-flex!important;font-size:12px}
+.orbit-route-nav{flex-wrap:nowrap;overflow-x:auto;padding-inline:16px;scrollbar-width:thin}
+.orbit-interior .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+.orbit-interior :is(h1,.guide-hero h1){font-size:clamp(32px,9vw,46px)!important;line-height:1.13!important;overflow-wrap:break-word}
+.orbit-interior :is(.tables,.plan-grid,.browser,.contact-grid,.player-links){grid-template-columns:minmax(0,1fr)!important}
+.orbit-interior :is(.hero,.section,.support){padding-left:20px;padding-right:20px}
+.orbit-interior :is(.hero-actions,.actions){flex-wrap:wrap}
+.orbit-interior :is(th,td){padding:12px 8px;font-size:13px}
+.orbit-interior header nav{max-height:70vh;overflow-y:auto}
+.orbit-interior .brand{min-width:0}
+.orbit-interior .orbit-site-language{max-width:115px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}*{animation:none!important;transition:none!important}}
+.orbit-interior p,.orbit-interior .stat-grid span,.orbit-interior .catalog-summary{color:#c1bbd3}
+.orbit-interior .orbit-route-nav{scrollbar-color:#7354af #0c0a22}
+.orbit-interior.guide-page .site-header{position:sticky!important;top:0;height:auto;min-height:76px;padding:12px 20px}
+.orbit-interior.guide-page .nav-shell{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;height:auto}
+.orbit-interior.guide-page .container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+.orbit-interior.guide-page .site-header .container{width:100%}
+.orbit-interior.guide-page .guide-quickbar{position:static}
+.orbit-interior.guide-page .topbar{padding:6px 0}
+.orbit-interior.guide-page .guide-hero{padding-inline:0}
+.orbit-interior .content-tabs button{background:#18132d;color:#d9caf7;border-color:#8766b8}
+.orbit-interior .content-tabs button[aria-pressed=true]{background:#7045ca;color:#fff}
+.orbit-interior .category-item,.orbit-interior .channel-row{background:#1b1730!important;color:#f4efff!important;border-color:#ffffff20!important}
+.orbit-interior .category-item small,.orbit-interior .channel-row small{color:#bfb2d8!important}
+@media(max-width:600px){.orbit-interior.guide-page .guide-nav{gap:12px}.orbit-interior.guide-page .nav-shell{justify-content:center}.orbit-interior.guide-page .guide-hero{padding-top:45px}}
+.orbit-payment :is(.card,.guide,.step,.payment-start,.support-box,.faq details,.info){background:#111127!important;color:#f5f3ff!important;border-color:#ffffff20!important}
+.orbit-payment :is(.section-title,.card h3,.guide h3,.step b,.payment-brand){color:#f5f3ff!important}
+.orbit-payment .hero-logo{background:transparent!important}
+.orbit-payment .wrap.nav{background:transparent!important}
+.orbit-payment .warning{background:#382a15!important;color:#ffe3a3!important;border-color:#806539!important}
+.orbit-payment .guide-link{color:#c2a8ff!important}

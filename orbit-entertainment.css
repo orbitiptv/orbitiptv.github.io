@@ -24,3 +24,9 @@
 .carousel-controls button:disabled{opacity:.3;cursor:default;background:#ffffff07}
 @media(max-width:900px){#series-track .poster-card{flex-basis:calc((100% - 36px)/3)}}
 @media(max-width:620px){#series-track .poster-card{flex-basis:calc((100% - 12px)/2)}}
+/* Continuous looping keeps the original cards and their accessible controls. */
+.channel-track,.poster-track{scroll-snap-type:none;scroll-behavior:auto;overflow-anchor:none}
+#series-track .poster-card{flex-basis:calc((100% - 36px)/3);min-width:170px}
+.carousel-pause{font-size:15px!important}
+@media(max-width:620px){#series-track .poster-card{flex-basis:calc((100% - 12px)/2);min-width:130px}}
+.sports-brand{flex:0 0 220px;min-height:160px;display:flex;flex-direction:column;justify-content:center;gap:15px;text-decoration:none;background:linear-gradient(140deg,#211440,#10172c);border:1px solid #a785ff40;border-radius:18px;padding:25px}.sports-brand span{font-size:10px;letter-spacing:.14em;color:#ac97dc}.sports-brand strong{font-size:25px}.sports-brand small{color:#bda5ff}
