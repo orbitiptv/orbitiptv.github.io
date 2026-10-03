@@ -3,3 +3,4 @@ Allow: /
 
 Sitemap: https://orbitiptv.github.io/sitemap.xml
 Sitemap: https://orbitiptv.github.io/sitemap.txt
+Sitemap: https://orbitiptv.github.io/orbit-iptv-plus/sitemap.xml
