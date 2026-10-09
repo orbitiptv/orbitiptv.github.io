@@ -7,7 +7,7 @@ const panel=document.createElement('section');panel.id='orbit-chat';panel.hidden
 const log=panel.querySelector('#orbit-chat-log'),input=panel.querySelector('input');
 function say(text,customer=false){const p=document.createElement('p');p.textContent=text;if(customer){p.className='customer notranslate';p.setAttribute('translate','no')}log.append(p);log.scrollTop=log.scrollHeight}
 function link(text,url){const a=document.createElement('a');a.textContent=text;a.href=url;a.target='_blank';a.rel='noopener noreferrer';log.append(a);log.scrollTop=log.scrollHeight}
-const whats=text=>'https://wa.me/38669843976?text='+encodeURIComponent(text);
+const whats=text=>'https://wa.me/38641377624?text='+encodeURIComponent(text);
 function trials(){say('Try it on your own device before choosing a plan. Orbit IPTV offers a free 24-hour test; Lion OTT offers a free 12-hour test. Which service would you like to try?');link('Request Orbit IPTV — free 24-hour test',whats('Hello, I would like a free 24-hour Orbit IPTV test. My device is: '));link('Request Lion OTT — free 12-hour test',whats('Hello, I would like a free 12-hour Lion OTT test. My device is: '))}
 function reply(question){
  say('Our team will be happy to help. Tap below to continue on WhatsApp. Your question will be included in the message, ready for you to send.');
