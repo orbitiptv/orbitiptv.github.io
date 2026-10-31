@@ -6,12 +6,12 @@ const toggle=document.createElement('button');toggle.id='orbit-chat-toggle';togg
 const panel=document.createElement('section');panel.id='orbit-chat';panel.hidden=true;panel.setAttribute('aria-label','Orbit IPTV assistant');panel.innerHTML='<header><strong>Orbit IPTV assistant</strong><button id="orbit-chat-close" aria-label="Close chat">×</button></header><div id="orbit-chat-log" role="log" aria-live="polite"></div><div id="orbit-chat-options"></div><form><input id="orbit-chat-input" aria-label="Your question" placeholder="How can we help you?" maxlength="500" autocomplete="off"><button type="submit">Send</button></form><div id="orbit-chat-note">Automated welcome assistant. Questions are handled by our team on WhatsApp.</div>';document.body.append(panel);
 const log=panel.querySelector('#orbit-chat-log'),input=panel.querySelector('input');
 function say(text,customer=false){const p=document.createElement('p');p.textContent=text;if(customer){p.className='customer notranslate';p.setAttribute('translate','no')}log.append(p);log.scrollTop=log.scrollHeight}
-function link(text,url){const a=document.createElement('a');a.textContent=text;a.href=url;a.target='_blank';a.rel='noopener noreferrer';log.append(a);log.scrollTop=log.scrollHeight}
+function link(text,url){const a=document.createElement('a');a.textContent='WhatsApp · '+text;a.href=url;a.target='_blank';a.rel='noopener noreferrer';log.append(a);log.scrollTop=log.scrollHeight}
 const whats=text=>'https://wa.me/38669843976?text='+encodeURIComponent(text);
 function trials(){say('Try it on your own device before choosing a plan. Orbit IPTV offers a free 24-hour test; Lion OTT offers a free 12-hour test. Which service would you like to try?');link('Request Orbit IPTV — free 24-hour test',whats('Hello, I would like a free 24-hour Orbit IPTV test. My device is: '));link('Request Lion OTT — free 12-hour test',whats('Hello, I would like a free 12-hour Lion OTT test. My device is: '))}
 function reply(question){
- say('Our team will be happy to help. Tap below to continue on WhatsApp. Your question will be included in the message, ready for you to send.');
- link('Continue on WhatsApp',whats('Hello Orbit IPTV, '+question));
+ say('Our team will be happy to help. Tap the WhatsApp button below to open a message to our team. Your question will be included, ready for you to send.');
+ link('Send message',whats('Hello Orbit IPTV, '+question));
 }
 for(const [label,topic]of [['Free test','test'],['Prices','prices'],['Channels','channels'],['Installation','installation'],['VPN / help','vpn'],['Reseller','reseller']]){const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',()=>{say(label,true);reply('I would like help with '+label.toLowerCase()+'.')});panel.querySelector('#orbit-chat-options').append(b)}
 let welcomed=false;function open(value){panel.hidden=!value;toggle.setAttribute('aria-expanded',String(value));if(value){if(!welcomed){say('Hello and welcome to Orbit IPTV! 👋 How can we help you today? Ask a question or choose a topic below, and we will connect you with our team on WhatsApp.');welcomed=true}input.focus()}else toggle.focus()}
